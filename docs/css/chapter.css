@@ -1,0 +1,116 @@
+* {
+  top: 0px;
+  left: 0px;
+  margin: 0px;
+  border: 0px;
+  padding: 0px;
+}
+
+canvas {
+  padding: 0px calc(50% - 320px);
+  height: 100%;
+  width: 640px;
+  position: fixed;
+  background-color: #fbfbfb;
+  filter: blur(4px);
+}
+
+#chat {
+  padding: 0px calc(50% - 320px) 120px calc(50% - 320px);
+  width: 640px;
+  font-size: 24px;
+  position: absolute;
+  flex-flow: column;
+  list-style: none;
+}
+
+#chat rt {
+  font-size: 0.5em;
+}
+
+.voice-left, .voice-right, .voice-blank {
+  margin: 1em 0.5em;
+  border-radius: 1em;
+  padding: 0.5em;
+  clear: both;
+}
+
+.voice-left {
+  margin-right: 2em;
+  float: left;
+}
+
+.voice-right {
+  margin-left: 2em;
+  float: right;
+}
+
+.voice-blank {
+  background-color: #fbfbfb;
+  float: left;
+}
+
+.telephone {
+  border: 2px solid #808080;
+  border-radius: 0px;
+}
+
+.description {
+  clear: both;
+}
+
+#chat hr {
+  margin: 0px 160px;
+  border-bottom: 1px dashed #808080;
+  height: 1px;
+  width: 320px;
+  clear: both;
+}
+
+.sectionIndex {
+  margin-bottom: 3em;
+  border-bottom: 2px solid #808080;
+  padding-top: 3em;
+  position: relative;
+  clear: both;
+}
+
+.sectionIndex a {
+  left: 260px;
+  padding-top: calc(2.25em + 1px);
+  width: 120px;
+  position: absolute;
+  color: #808080;
+  background-color: #fbfbfb;
+  text-align: center;
+  text-decoration: none;
+}
+
+#menu {
+  top: calc(100% - 40px);
+  padding: 0 calc(50% - 320px);
+  height: 40px;
+  width: 100%;
+  position: fixed;
+  color: white;
+  font-size: 24px;
+  text-align: center;
+  display: flex;
+  flex-flow: row;
+  list-style: none;
+}
+
+#menu a {
+  color: white;
+  text-decoration: none;
+}
+
+#menu-left, #menu-right {
+  width: 120px;
+  background: #808080;
+}
+
+#menu-center {
+  width: 400px;
+  background: #404040;
+}
