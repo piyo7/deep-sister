@@ -16,8 +16,7 @@ canvas {
 }
 
 #chat {
-  top: 1.5em;
-  padding: 0px calc(50% - 320px) 3em calc(50% - 320px);
+  padding: 0px calc(50% - 320px) 0px calc(50% - 320px);
   width: 640px;
   font-size: 24px;
   position: absolute;
@@ -88,8 +87,9 @@ canvas {
 }
 
 #menu {
-  padding: 0 calc(50% - 320px);
-  height: 1.5em;
+  padding: 0px calc(50% - 320px);
+  height: 2em;
+  line-height: 2em;
   width: 100%;
   position: fixed;
   color: white;
