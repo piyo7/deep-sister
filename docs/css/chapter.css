@@ -62,7 +62,7 @@ canvas {
 
 #chat hr {
   margin: 0px 160px;
-  border-bottom: 1px dashed #808080;
+  border-bottom: 2px dashed #404040;
   height: 1px;
   width: 320px;
   clear: both;
@@ -70,7 +70,7 @@ canvas {
 
 .sectionIndex {
   margin-bottom: 3em;
-  border-bottom: 2px solid #808080;
+  border-bottom: 2px solid #404040;
   padding-top: 3em;
   position: relative;
   clear: both;
@@ -81,7 +81,7 @@ canvas {
   padding-top: calc(2.25em + 1px);
   width: 120px;
   position: absolute;
-  color: #808080;
+  color: #404040;
   background-color: #fbfbfb;
   text-align: center;
   text-decoration: none;
