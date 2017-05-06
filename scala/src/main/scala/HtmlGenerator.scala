@@ -11,7 +11,7 @@ object HtmlGenerator {
       "04_流星シンドローム.md",
       "05_DELETEME.md",
       "credit.md"
-    )} yield Using(Source.fromResource(fileName))(_.mkString)).reduce(_ + _)
+    )} yield Using(Source.fromResource(fileName))(_.mkString)).mkString
 
     val novel = Novel.parse(source)
 
@@ -59,13 +59,23 @@ object HtmlGenerator {
           }).flatten
       }).flatten
 
-      Using(new PrintWriter("../docs/" + chapter.path + ".html", "UTF-8")) {
-        val next = nextChapter.map(c => f"""<a href="${c.path}.html">次章へ</a>""").getOrElse("")
+      val lead = chapter.sections.flatMap(_.lines).collect {
+        case Voice(_, _, Voice.Kind.Direct, content) => "「" + content + "」"
+        case Voice(_, _, Voice.Kind.Telephone, content) => "『" + content + "』"
+      }.mkString.lines.mkString.
+        replace("｜", "").
+        replaceAll("《.*?》", "").
+        replaceAll("<.*?>", "").
+        take(199) + "…"
 
+      val next = nextChapter.map(c => f"""<a href="${c.path}.html">次章へ</a>""").getOrElse("")
+
+      Using(new PrintWriter("../docs/" + chapter.path + ".html", "UTF-8")) {
         _.write(template.
           replace("__CHAT__", chat.mkString("\n    ")).
           replace("__TITLE__", chapter.title).
           replace("__PATH__", chapter.path).
+          replace("__LEAD__", lead).
           replace("__NEXT__", next))
       }
     }
