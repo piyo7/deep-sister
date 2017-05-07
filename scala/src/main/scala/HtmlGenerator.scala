@@ -1,4 +1,5 @@
 import java.io.PrintWriter
+import java.net.URLEncoder
 
 import scala.io.Source
 
@@ -13,7 +14,7 @@ object HtmlGenerator {
       "credit.md"
     )} yield Using(Source.fromResource(fileName))(_.mkString)).mkString
 
-    val novel = Novel.parse(source)
+    val novel = Novel.parse("深層の令妹 ζ(*ﾟｗﾟ)ζ", source)
 
     for (chapter <- novel.chapters) {
       println(chapter.title)
@@ -68,16 +69,19 @@ object HtmlGenerator {
         replaceAll("<.*?>", "").
         take(199) + "…"
 
+      val share = URLEncoder.encode(chapter.title + " - " + novel.title, "UTF-8")
+
       val next = nextChapter.map(c => f"""<a href="${c.path}">次章へ</a>""").getOrElse("")
 
       Using(new PrintWriter("../docs/" + chapter.path + ".html", "UTF-8")) {
         _.write(template.
           replace("__ROOT__", "https://piyo7.github.io/deep-sister").
           replace("__PATH__", chapter.path).
-          replace("__NOVEL__", "深層の令妹 ζ(*ﾟｗﾟ)ζ").
+          replace("__NOVEL__", novel.title).
           replace("__CHAPTER__", chapter.title).
           replace("__LEAD__", lead).
           replace("__CHAT__", chat.mkString("\n    ")).
+          replace("__SHARE__", share).
           replace("__NEXT__", next))
       }
     }

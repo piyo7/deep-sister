@@ -1,14 +1,14 @@
-case class Novel(chapters: Seq[Chapter])
+case class Novel(title: String, chapters: Seq[Chapter])
 
 object Novel {
-  def parse(source: String): Novel = {
+  def parse(title: String, source: String): Novel = {
     val chapters =
       for (chapter <- source.split("(?m)^# ") if chapter.trim.nonEmpty) yield {
         val titlePathSections = chapter.split("\n", 2)
         val titlePath = titlePathSections.head.split(" ", 2)
         Chapter.parse(titlePath.head, titlePath.last, titlePathSections.last)
       }
-    Novel(chapters)
+    Novel(title: String, chapters)
   }
 }
 
