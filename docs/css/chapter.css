@@ -1,12 +1,3 @@
-canvas {
-  padding: 0 calc(50% - 320px);
-  height: 100%;
-  width: 640px;
-  position: fixed;
-  background-color: #fbfbfb;
-  filter: blur(4px);
-}
-
 #chat {
   padding: 0 calc(50% - 320px);
   width: 640px;
