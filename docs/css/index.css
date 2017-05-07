@@ -1,7 +1,6 @@
 #contents {
   padding: 32px calc(50% - 320px) 0 calc(50% - 320px);
-  width: 100%;
-  max-width: 640px;
+  width: 640px;
   position: absolute;
   flex-flow: column;
   text-align: center;
@@ -40,8 +39,8 @@
 .badge {
   margin: 4px;
   border: 2px solid #a0a0a0;
-  height: 0.5em;
-  width: 0.5em;
+  height: 0.4em;
+  width: 0.4em;
   border-radius: 50%;
 }
 
@@ -85,5 +84,5 @@ hr {
 }
 
 #menu {
-  font-size: 16px;
+  font-size: 20px;
 }
