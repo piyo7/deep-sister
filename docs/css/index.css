@@ -1,7 +1,7 @@
 #contents {
-  width: 640px;
   height: 100%;
-  padding: 28px calc(50% - 320px) 0 calc(50% - 320px);
+  width: 640px;
+  padding: 32px calc(50% - 320px) 0 calc(50% - 320px);
   text-align: center;
 }
 
@@ -83,5 +83,5 @@ hr {
 }
 
 #menu {
-  font-size: 14px;
+  font-size: 16px;
 }
