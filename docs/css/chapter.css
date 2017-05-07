@@ -86,6 +86,58 @@ canvas {
   text-decoration: none;
 }
 
+#sns {
+  padding-top: 6em;
+  display: flex;
+  flex-flow: row;
+  list-style: none;
+  clear: both;
+}
+
+#sns a {
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+  display: block;
+  text-align: center;
+}
+
+#sns-hatebu, #sns-facebook, #sns-twitter, #sns-line {
+  width: 160px;
+  font-size: 24px;
+  height: 2em;
+  line-height: 2em;
+  border-top: 2px solid #c0c0c0;
+}
+
+#sns-hatebu a {
+  color: #00A4DE;
+}
+
+#sns-facebook a {
+  color: #4267B2;
+}
+
+#sns-twitter a {
+  color: #1B95E0;
+}
+
+#sns-line a {
+  color: #00B900;
+}
+
+.icon-hatebu:before {
+  content: "B!";
+  font-family: Verdana;
+  font-weight: bold;
+}
+
+.icon-line:before {
+  content: "LINE";
+  font-family: Meiryo, sans-serif;
+  font-weight: bold;
+}
+
 #menu {
   padding: 0px calc(50% - 320px);
   height: 2em;
