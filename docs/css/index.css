@@ -1,8 +1,8 @@
 #contents {
   padding: 32px calc(50% - 320px) 0 calc(50% - 320px);
-  height: 100%;
   width: 640px;
   position: absolute;
+  flex-flow: column;
   text-align: center;
 }
 
