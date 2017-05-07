@@ -68,14 +68,16 @@ object HtmlGenerator {
         replaceAll("<.*?>", "").
         take(199) + "…"
 
-      val next = nextChapter.map(c => f"""<a href="${c.path}.html">次章へ</a>""").getOrElse("")
+      val next = nextChapter.map(c => f"""<a href="${c.path}">次章へ</a>""").getOrElse("")
 
       Using(new PrintWriter("../docs/" + chapter.path + ".html", "UTF-8")) {
         _.write(template.
-          replace("__CHAT__", chat.mkString("\n    ")).
-          replace("__TITLE__", chapter.title).
+          replace("__ROOT__", "https://piyo7.github.io/deep-sister").
           replace("__PATH__", chapter.path).
+          replace("__NOVEL__", "深層の令妹 ζ(*ﾟｗﾟ)ζ").
+          replace("__CHAPTER__", chapter.title).
           replace("__LEAD__", lead).
+          replace("__CHAT__", chat.mkString("\n    ")).
           replace("__NEXT__", next))
       }
     }
