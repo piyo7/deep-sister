@@ -70,7 +70,7 @@ object HtmlGenerator {
         replaceAll("<.*?>", "").
         take(199) + "…"
 
-      val share = URLEncoder.encode(chapter.title + " - " + novel.title, "UTF-8")
+      val share = URLEncoder.encode(chapter.title + " - " + novel.title, "UTF-8").replace("+", "%20")
 
       val next = nextChapter.map(c => f"""<a href="${c.path}">次へ</a>""").getOrElse("")
 
