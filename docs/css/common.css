@@ -77,6 +77,7 @@ body {
 #menu a {
   color: white;
   text-decoration: none;
+  display: block;
 }
 
 #menu-left, #menu-right {
