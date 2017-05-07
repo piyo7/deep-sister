@@ -90,7 +90,7 @@ canvas {
 }
 
 #sns {
-  padding-top: 6em;
+  padding: 6em 0px 1em 0px;
   display: flex;
   flex-flow: row;
   list-style: none;
