@@ -70,10 +70,11 @@ canvas {
 }
 
 .sectionIndex a {
-  left: 260px;
-  padding-top: calc(2.25em + 1px);
-  width: 120px;
+  left: 240px;
+  padding-top: 1.2em;
+  width: 160px;
   position: absolute;
+  font-size: 1.5em;
   color: #404040;
   background-color: #fbfbfb;
   text-align: center;
