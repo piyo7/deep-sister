@@ -1,0 +1,87 @@
+#contents {
+  width: 640px;
+  height: 100%;
+  padding: 28px calc(50% - 320px) 0 calc(50% - 320px);
+  text-align: center;
+}
+
+.chapter {
+  height: 3em;
+  width: 640px;
+  position: relative;
+  font-size: 28px;
+}
+
+.chapter p {
+  height: 3em;
+  width: 640px;
+  position: absolute;
+}
+
+.chapter a {
+  height: 3em;
+  line-height: 2em;
+  color: #000000;
+  text-decoration: none;
+  display: block;
+}
+
+.badges {
+  width: 640px;
+  height: 1em;
+  position: absolute;
+  top: 1.75em;
+  display: flex;
+  justify-content: center;
+}
+
+.badge {
+  border-radius: 50%;
+  height: 0.5em;
+  width: 0.5em;
+  margin: 4px;
+  border: 2px solid #a0a0a0;
+}
+
+.extra {
+  height: 3em;
+  width: 640px;
+  position: relative;
+  font-size: 20px;
+}
+
+.extra p {
+  height: 3em;
+  width: 640px;
+  line-height: 3em;
+  position: absolute;
+  background: linear-gradient(to bottom, #fbfbfb, #fbfbfb, #fbfbfb, rgba(255, 255, 255, 0), #fbfbfb, #fbfbfb, #fbfbfb);
+}
+
+.extra a {
+  color: #000000;
+  text-decoration: none;
+  display: block;
+}
+
+.interlude {
+  background: linear-gradient(to right, #fbfbfb, hsl(30, 100%, 90%), hsl(30, 100%, 90%), hsl(30, 100%, 90%), #fbfbfb);
+}
+
+.epilogue {
+  background: linear-gradient(to right, hsla(30, 100%, 90%, 0), hsl(120, 100%, 90%), hsl(210, 100%, 90%), hsl(300, 100%, 90%), hsla(30, 100%, 90%, 0));
+}
+
+hr {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #fbfbfb, #a0a0a0, #a0a0a0, #fbfbfb);
+}
+
+#sns {
+  padding: 3em 0 1em 0;
+}
+
+#menu {
+  font-size: 14px;
+}

@@ -71,7 +71,7 @@ object HtmlGenerator {
 
       val share = URLEncoder.encode(chapter.title + " - " + novel.title, "UTF-8")
 
-      val next = nextChapter.map(c => f"""<a href="${c.path}">次章へ</a>""").getOrElse("")
+      val next = nextChapter.map(c => f"""<a href="${c.path}">次へ</a>""").getOrElse("")
 
       Using(new PrintWriter("../docs/" + chapter.path + ".html", "UTF-8")) {
         _.write(template.
