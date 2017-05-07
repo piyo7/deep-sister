@@ -6,6 +6,7 @@ import scala.io.Source
 object HtmlGenerator {
   def main(args: Array[String]) {
     val source = (for {fileName <- Seq(
+      "tutorial.md",
       "01_伊宮奉双譜.md",
       "02_灼け焦がれた涙.md",
       "03_魔法少女ふわふわの夏.md",
@@ -24,7 +25,7 @@ object HtmlGenerator {
 
     val template = Using(Source.fromResource("template.html"))(_.mkString)
 
-    for ((chapter, nextChapter) <- novel.chapters.zipAll(novel.chapters.slice(1, 5).map(Some(_)), novel.chapters.last, None)
+    for ((chapter, nextChapter) <- novel.chapters.zipAll(novel.chapters.slice(1, 6).map(Some(_)), novel.chapters.last, None)
     ) {
       val chat = (for ((section, i) <- chapter.sections.zipWithIndex) yield {
         f"""<div class="sectionIndex" id="section-${i + 1}%02d"><a href="#section-${i + 1}%02d">§</a></div>""" +:
