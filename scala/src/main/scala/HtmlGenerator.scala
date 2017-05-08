@@ -6,13 +6,13 @@ import scala.io.Source
 object HtmlGenerator {
   def main(args: Array[String]) {
     val source = (for {fileName <- Seq(
-      "tutorial.md",
-      "01_伊宮奉双譜.md",
-      "02_灼け焦がれた涙.md",
-      "03_魔法少女ふわふわの夏.md",
-      "04_流星シンドローム.md",
-      "05_DELETEME.md",
-      "credit.md"
+      "tutorial.txt",
+      "01_伊宮奉双譜.txt",
+      "02_灼け焦がれた涙.txt",
+      "03_魔法少女ふわふわの夏.txt",
+      "04_流星シンドローム.txt",
+      "05_DELETEME.txt",
+      "credit.txt"
     )} yield Using(Source.fromResource(fileName))(_.mkString)).mkString
 
     val novel = Novel.parse("深層の令妹 ζ(*ﾟｗﾟ)ζ", source)
