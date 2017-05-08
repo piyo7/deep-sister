@@ -36,7 +36,7 @@ object Section {
   private val voiceR = """^([lr])(\d\d) ([「『])(.*)([」』])$""".r
   private val voiceStartR = """^([lr])(\d\d) ([「『])(.*)$""".r
   private val voiceEndR = """^(.*)([」』])$""".r
-  private val commentR = """^//.*$""".r
+  private val commentR = """^::.*$""".r
   private val horizonR = """^---$""".r
   private val blankR = """^$""".r
 
