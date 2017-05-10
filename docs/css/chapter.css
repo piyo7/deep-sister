@@ -19,12 +19,14 @@
 }
 
 .voice-left {
-  margin-right: 2em;
+  margin-right: 4em;
+  border-top-left-radius: 0;
   float: left;
 }
 
 .voice-right {
-  margin-left: 2em;
+  margin-left: 4em;
+  border-top-right-radius: 0;
   float: right;
 }
 
