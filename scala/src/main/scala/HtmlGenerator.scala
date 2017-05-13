@@ -42,7 +42,6 @@ object HtmlGenerator {
                     case Voice.Kind.Direct => None
                   },
                   Some(f"char${v.character}%02d")
-                  , Some("voice")
                 ).flatten
 
                 for {
