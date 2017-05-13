@@ -28,25 +28,46 @@ body {
 
 #sns-hatebu, #sns-facebook, #sns-twitter, #sns-line {
   width: 160px;
+  padding: 0.5em 0;
   font-size: 24px;
-  height: 3em;
-  line-height: 3em;
+  height: 2em;
+  line-height: 2em;
 }
 
 #sns-hatebu a {
   color: #00A4DE;
 }
 
+#sns-hatebu a:hover {
+  background-color: #00A4DE;
+  color: #fbfbfb;
+}
+
 #sns-facebook a {
   color: #4267B2;
+}
+
+#sns-facebook a:hover {
+  background-color: #4267B2;
+  color: #fbfbfb;
 }
 
 #sns-twitter a {
   color: #1B95E0;
 }
 
+#sns-twitter a:hover {
+  background-color: #1B95E0;
+  color: #fbfbfb;
+}
+
 #sns-line a {
   color: #00B900;
+}
+
+#sns-line a:hover {
+  background-color: #00B900;
+  color: #fbfbfb;
 }
 
 .icon-hatebu:before {
