@@ -28,7 +28,7 @@ object HtmlGenerator {
 
     for ((chapter, nextChapter) <- novel.chapters.zipAll(novel.chapters.slice(1, 6).map(Some(_)), novel.chapters.last, None)) {
       val chat = (for ((section, i) <- chapter.sections.zipWithIndex) yield {
-        (if (i > 0) f"""<div class="sectionIndex"><span>§</span></div>""" else "") +:
+        (f"""<div class="sectionIndex" id="${i + 1}%02d">""" + (if (i > 0) """<span>§</span>""" else "") + """</div>""") +:
           (for (paragraph <- section.paragraphs) yield {
             (paragraph, section.kind) match {
               case (v: Voice, _) =>
@@ -69,6 +69,13 @@ object HtmlGenerator {
           }).flatten
       }).flatten
 
+      val menu = chapter.title + (if (chapter.sections.size > 1) {
+        (Seq(""" <i class="fa fa-angle-down"></i>""", """<ul id="menu-section">""") ++
+          (1 to chapter.sections.size).map(i => f"""<li><a href="#$i%02d">$i%02d</a></li>""").map(" " * 2 + _) :+
+          """</ul>"""
+          ).mkString("\n" + " " * 6)
+      } else "")
+
       val lead = chapter.sections.flatMap(_.paragraphs).collect {
         case Voice(_, _, Voice.Kind.Direct, lines) => "「" + lines.mkString("") + "」"
         case Voice(_, _, Voice.Kind.Telephone, lines) => "『" + lines.mkString("") + "』"
@@ -88,8 +95,9 @@ object HtmlGenerator {
           replace("__PATH__", chapter.path).
           replace("__NOVEL__", novel.title).
           replace("__CHAPTER__", chapter.title).
+          replace("__MENU__", menu).
           replace("__LEAD__", lead).
-          replace("__CHAT__", chat.mkString("\n    ")).
+          replace("__CHAT__", chat.mkString("\n" + " " * 4)).
           replace("__SHARE__", share).
           replace("__NEXT__", next))
       }

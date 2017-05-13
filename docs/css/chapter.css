@@ -53,6 +53,11 @@
   clear: both;
 }
 
+#section-01 {
+  margin-bottom: 0;
+  border-bottom: 0;
+}
+
 .sectionIndex {
   margin-bottom: 3em;
   border-bottom: 2px solid #404040;
@@ -79,4 +84,24 @@
 
 #sns-hatebu, #sns-facebook, #sns-twitter, #sns-line {
   border-top: 2px solid #c0c0c0;
+}
+
+#menu-center:hover #menu-section {
+  visibility: visible;
+}
+
+#menu-section {
+  width: 640px;
+  left: -120px;
+  position: relative;
+  visibility: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+#menu-section li {
+  height: 2em;
+  width: 80px;
+  background: #808080;
 }
