@@ -28,12 +28,12 @@ object HtmlGenerator {
 
     for ((chapter, nextChapter) <- novel.chapters.zipAll(novel.chapters.slice(1, 6).map(Some(_)), novel.chapters.last, None)) {
       val chat = (for ((section, i) <- chapter.sections.zipWithIndex) yield {
-        f"""<div class="sectionIndex" id="section-${i + 1}%02d"><span>§</span></div>""" +:
+        (if (i > 0) f"""<div class="sectionIndex""><span>§</span></div>""" else "") +:
           (for (paragraph <- section.paragraphs) yield {
             (paragraph, section.kind) match {
               case (v: Voice, _) =>
                 val classes = Seq(
-                   v.position match {
+                  v.position match {
                     case Voice.Position.Right => Some("voice-right")
                     case Voice.Position.Left => Some("voice-left")
                   },
@@ -42,6 +42,7 @@ object HtmlGenerator {
                     case Voice.Kind.Direct => None
                   },
                   Some(f"char${v.character}%02d")
+                  , Some("voice")
                 ).flatten
 
                 for {

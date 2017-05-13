@@ -66,6 +66,7 @@ body {
   line-height: 2em;
   padding: 0 calc(50% - 320px);
   width: 100%;
+  font-size: 24px;
   position: fixed;
   color: white;
   text-align: center;
