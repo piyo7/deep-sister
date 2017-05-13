@@ -114,4 +114,5 @@ body {
 #menu-center {
   width: 400px;
   background: #808080;
+  white-space: nowrap;
 }

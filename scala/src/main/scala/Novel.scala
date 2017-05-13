@@ -40,6 +40,7 @@ object Section {
   private val commentR = """^::.*$""".r
   private val horizonR = """^---$""".r
   private val blankR = """^$""".r
+  private val grayedR = """^(\/\/.*)$""".r
 
   def parse(title: String, source: String): Section = {
     var parsingVoice: Option[Voice] = None
@@ -82,8 +83,11 @@ object Section {
           case (blankR(), _) =>
             Some(Blank)
 
+          case (grayedR(line), _) =>
+            Some(Description(line, true))
+
           case (line, _) =>
-            Some(Description(line))
+            Some(Description(line, false))
         }
       }).flatten
 
@@ -146,7 +150,7 @@ object Voice {
 
 }
 
-case class Description(line: String) extends Paragraph
+case class Description(line: String, grayed: Boolean) extends Paragraph
 
 case object Horizon extends Paragraph
 

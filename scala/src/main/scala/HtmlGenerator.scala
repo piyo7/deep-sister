@@ -13,7 +13,8 @@ object HtmlGenerator {
       "03_魔法少女ふわふわの夏.txt",
       "04_流星シンドローム.txt",
       "05_DELETEME.txt",
-      "credit.txt"
+      "credit.txt",
+      "XX_「わたくしの一生を賭けて、あなたの幸せを計算してみせて？」.txt"
     )} yield Using(Source.fromResource(fileName))(_.mkString)).mkString
 
     val novel = Novel.parse("深層の令妹 ζ(*ﾟｗﾟ)ζ", source)
@@ -28,7 +29,9 @@ object HtmlGenerator {
 
     for ((chapter, nextChapter) <- novel.chapters.zipAll(novel.chapters.slice(1, 6).map(Some(_)), novel.chapters.last, None)) {
       val chat = (for ((section, i) <- chapter.sections.zipWithIndex) yield {
-        (f"""<div class="sectionIndex" id="${i + 1}%02d">""" + (if (i > 0) """<span>§</span>""" else "") + """</div>""") +:
+        (f"""<div class="sectionIndex" id="${i + 1}%02d">""" +
+          (if (i > 0) f"""<span>${if (section.title.take(2) == ": ") section.title.drop(2) else "§"}</span>""" else "") +
+          """</div>""") +:
           (for (paragraph <- section.paragraphs) yield {
             (paragraph, section.kind) match {
               case (v: Voice, _) =>
@@ -55,7 +58,8 @@ object HtmlGenerator {
                 }
 
               case (d: Description, _) =>
-                Seq(f"""<p class="description">${formatRuby(d.line)}</p>""")
+                val classes = Seq("description") ++ (if (d.grayed) Seq("grayed") else Seq())
+                Seq(f"""<p class="${classes.mkString(" ")}">${formatRuby(d.line.replace("<", "&lt").replace(">", "&gt"))}</p>""")
 
               case (Horizon, _) =>
                 Seq("""<hr>""")

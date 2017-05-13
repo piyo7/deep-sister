@@ -45,6 +45,10 @@
   clear: both;
 }
 
+.grayed {
+  color: #808080;
+}
+
 #chat hr {
   margin: 0 160px;
   border-bottom: 2px dashed #404040;
