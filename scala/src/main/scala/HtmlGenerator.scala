@@ -32,15 +32,17 @@ object HtmlGenerator {
           (for (paragraph <- section.paragraphs) yield {
             (paragraph, section.kind) match {
               case (v: Voice, _) =>
-                val class1 = "voice-" + (v.position match {
-                  case Voice.Position.Right => "right"
-                  case Voice.Position.Left => "left"
-                })
-                val class2 = v.kind match {
-                  case Voice.Kind.Telephone => "telephone"
-                  case Voice.Kind.Direct => ""
-                }
-                val class3 = f"char${v.character}%02d"
+                val classes = Seq(
+                   v.position match {
+                    case Voice.Position.Right => Some("voice-right")
+                    case Voice.Position.Left => Some("voice-left")
+                  },
+                  v.kind match {
+                    case Voice.Kind.Telephone => Some("telephone")
+                    case Voice.Kind.Direct => None
+                  },
+                  Some(f"char${v.character}%02d")
+                ).flatten
 
                 for {
                   line <- v.lines
@@ -49,7 +51,7 @@ object HtmlGenerator {
                     case _ => ""
                   }))
                 } yield {
-                  f"""<p class="$class1 $class2 $class3">${formatRuby(formatVoice(l))}</p>"""
+                  f"""<p class="${classes.mkString(" ")}">${formatRuby(formatVoice(l))}</p>"""
                 }
 
               case (d: Description, _) =>
