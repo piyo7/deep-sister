@@ -89,7 +89,7 @@
 #menu-center:hover #menu-section {
   visibility: visible;
   opacity: 1;
-  transition: all 0.4s ease 0.2s;
+  transition: all 0.4s ease 0.1s;
 }
 
 #menu-section {

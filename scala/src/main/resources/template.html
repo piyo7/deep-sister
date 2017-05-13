@@ -67,15 +67,6 @@
       __NEXT__
     </li>
   </ul>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript">
-    $('a[href^="#"]').click(function() {
-      var targetY = $($(this).attr("href")).offset().top;
-      var duration = Math.abs(window.pageYOffset - targetY) / 10;
-      $("html, body").stop();
-      $("html, body").animate({ scrollTop: targetY }, duration, "swing");
-    });
-  </script>
 </body>
 
 </html>
