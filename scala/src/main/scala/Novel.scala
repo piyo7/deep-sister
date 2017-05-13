@@ -25,7 +25,7 @@ object Chapter {
   }
 }
 
-case class Section(title: String, lines: Seq[Line]) {
+case class Section(title: String, paragraphs: Seq[Paragraph]) {
   val kind: Section.Kind = title.headOption.map("「『".contains(_)) match {
     case Some(true) => Section.Kind.Voice
     case _ => Section.Kind.Description
@@ -35,7 +35,8 @@ case class Section(title: String, lines: Seq[Line]) {
 object Section {
   private val voiceR = """^([lr])(\d\d) ([「『])(.*)([」』])$""".r
   private val voiceStartR = """^([lr])(\d\d) ([「『])(.*)$""".r
-  private val voiceEndR = """^(.*)([」』])$""".r
+  private val voiceMiddleR = """^　(.*)$""".r
+  private val voiceEndR = """^　(.*)([」』])$""".r
   private val commentR = """^::.*$""".r
   private val horizonR = """^---$""".r
   private val blankR = """^$""".r
@@ -43,30 +44,33 @@ object Section {
   def parse(title: String, source: String): Section = {
     var parsingVoice: Option[Voice] = None
 
-    val lines: Array[Line] =
-      (for (line <- source.split("\n")) yield {
-        (line, parsingVoice) match {
-          case (voiceEndR(contentEnd, kindEnd), Some(voice@Voice(_, _, kindStart, _))) =>
+    val lines: Array[Paragraph] =
+      (for (paragraph <- source.split('\n')) yield {
+        (paragraph, parsingVoice) match {
+          case (voiceEndR(line, kindEnd), Some(voice@Voice(_, _, kindStart, _))) =>
             if (kindStart == Voice.Kind.parseEnd(kindEnd)) {
               parsingVoice = None
-              Some(voice.copy(content = voice.content + contentEnd))
+              Some(voice.copy(lines = voice.lines :+ line))
             } else {
-              throw new IllegalArgumentException(contentEnd)
+              throw new IllegalArgumentException(paragraph)
             }
 
-          case (contentNext, Some(voice)) =>
-            parsingVoice = Some(voice.copy(content = voice.content + contentNext + "\n"))
+          case (voiceMiddleR(line), Some(voice)) =>
+            parsingVoice = Some(voice.copy(lines = voice.lines :+ line))
             None
 
-          case (voiceR(position, character, kindStart, content, kindEnd), _) =>
+          case (_, Some(_)) =>
+            throw new IllegalArgumentException(paragraph)
+
+          case (voiceR(position, character, kindStart, line, kindEnd), _) =>
             if (Voice.Kind.parseStart(kindStart) == Voice.Kind.parseEnd(kindEnd)) {
-              Some(Voice(Voice.Position.parse(position), character.toInt, Voice.Kind.parseStart(kindStart), content))
+              Some(Voice(Voice.Position.parse(position), character.toInt, Voice.Kind.parseStart(kindStart), Seq(line)))
             } else {
-              throw new IllegalArgumentException(content)
+              throw new IllegalArgumentException(paragraph)
             }
 
-          case (voiceStartR(position, character, kindStart, content), _) =>
-            parsingVoice = Some(Voice(Voice.Position.parse(position), character.toInt, Voice.Kind.parseStart(kindStart), content + "\n"))
+          case (voiceStartR(position, character, kindStart, line), _) =>
+            parsingVoice = Some(Voice(Voice.Position.parse(position), character.toInt, Voice.Kind.parseStart(kindStart), Seq(line)))
             None
 
           case (commentR(), _) =>
@@ -78,8 +82,8 @@ object Section {
           case (blankR(), _) =>
             Some(Blank)
 
-          case (content, _) =>
-            Some(Description(content))
+          case (line, _) =>
+            Some(Description(line))
         }
       }).flatten
 
@@ -98,9 +102,9 @@ object Section {
 
 }
 
-sealed trait Line
+sealed trait Paragraph
 
-case class Voice(position: Voice.Position, character: Int, kind: Voice.Kind, content: String) extends Line
+case class Voice(position: Voice.Position, character: Int, kind: Voice.Kind, lines: Seq[String]) extends Paragraph
 
 object Voice {
 
@@ -142,8 +146,8 @@ object Voice {
 
 }
 
-case class Description(content: String) extends Line
+case class Description(line: String) extends Paragraph
 
-case object Horizon extends Line
+case object Horizon extends Paragraph
 
-case object Blank extends Line
+case object Blank extends Paragraph

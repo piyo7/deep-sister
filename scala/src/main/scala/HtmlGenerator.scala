@@ -1,6 +1,7 @@
 import java.io.PrintWriter
 import java.net.URLEncoder
 
+import scala.collection.mutable
 import scala.io.Source
 
 object HtmlGenerator {
@@ -19,35 +20,40 @@ object HtmlGenerator {
 
     for (chapter <- novel.chapters) {
       println(chapter.title)
-      println(chapter.sections.flatMap(_.lines).collect { case v: Voice => v.character }.distinct.sorted.mkString(", "))
+      println(chapter.sections.flatMap(_.paragraphs).collect { case v: Voice => v.character }.distinct.sorted.mkString(", "))
       println()
     }
 
     val template = Using(Source.fromResource("template.html"))(_.mkString)
 
-    for ((chapter, nextChapter) <- novel.chapters.zipAll(novel.chapters.slice(1, 6).map(Some(_)), novel.chapters.last, None)
-    ) {
+    for ((chapter, nextChapter) <- novel.chapters.zipAll(novel.chapters.slice(1, 6).map(Some(_)), novel.chapters.last, None)) {
       val chat = (for ((section, i) <- chapter.sections.zipWithIndex) yield {
         f"""<div class="sectionIndex" id="section-${i + 1}%02d"><a href="#section-${i + 1}%02d">§</a></div>""" +:
-          (for (line <- section.lines) yield {
-            (line, section.kind) match {
+          (for (paragraph <- section.paragraphs) yield {
+            (paragraph, section.kind) match {
               case (v: Voice, _) =>
-                for (l <- v.content.lines) yield {
-                  val class1 = "voice-" + (v.position match {
-                    case Voice.Position.Right => "right"
-                    case Voice.Position.Left => "left"
-                  })
-                  val class2 = v.kind match {
-                    case Voice.Kind.Telephone => "telephone"
-                    case Voice.Kind.Direct => ""
-                  }
-                  val class3 = f"char${v.character}%02d"
+                val class1 = "voice-" + (v.position match {
+                  case Voice.Position.Right => "right"
+                  case Voice.Position.Left => "left"
+                })
+                val class2 = v.kind match {
+                  case Voice.Kind.Telephone => "telephone"
+                  case Voice.Kind.Direct => ""
+                }
+                val class3 = f"char${v.character}%02d"
 
+                for {
+                  line <- v.lines
+                  l <- splitVoice(line + (line.lastOption match {
+                    case Some(last) if (last.toString.getBytes.length > 1) && !periods.contains(last) => "。"
+                    case _ => ""
+                  }))
+                } yield {
                   f"""<p class="$class1 $class2 $class3">${formatRuby(formatVoice(l))}</p>"""
                 }
 
               case (d: Description, _) =>
-                Seq(f"""<p class="description">${formatRuby(d.content)}</p>""")
+                Seq(f"""<p class="description">${formatRuby(d.line)}</p>""")
 
               case (Horizon, _) =>
                 Seq("""<hr>""")
@@ -61,9 +67,9 @@ object HtmlGenerator {
           }).flatten
       }).flatten
 
-      val lead = chapter.sections.flatMap(_.lines).collect {
-        case Voice(_, _, Voice.Kind.Direct, content) => "「" + content + "」"
-        case Voice(_, _, Voice.Kind.Telephone, content) => "『" + content + "』"
+      val lead = chapter.sections.flatMap(_.paragraphs).collect {
+        case Voice(_, _, Voice.Kind.Direct, lines) => "「" + lines.mkString("") + "」"
+        case Voice(_, _, Voice.Kind.Telephone, lines) => "『" + lines.mkString("") + "』"
       }.mkString.lines.mkString.
         replace("｜", "").
         replaceAll("《.*?》", "").
@@ -88,15 +94,45 @@ object HtmlGenerator {
     }
   }
 
-  private val periods = "。！？♪♡♥"
+  private val periods = "。！？♪♡♥　"
+  private val voiceWidth = 20
 
-  def formatVoice(content: String): String = {
-    content.dropWhile(_ == '　') +
-      (if (!periods.contains(content.last) && periods.exists(content.contains(_))) "。" else "")
+  def splitVoice(line: String): Seq[String] = {
+    val bracket = mutable.Seq.fill(3)(false)
+    val markedLine = for (char <- line) yield {
+      char match {
+        case '｜' => bracket(0) = true
+        case '》' => bracket(0) = false
+        case '「' => bracket(1) = true
+        case '」' => bracket(1) = false
+        case '『' => bracket(2) = true
+        case '』' => bracket(2) = false
+        case _ =>
+      }
+      (char, bracket.reduce(_ || _))
+    }
+    spanSeq(markedLine)(_ == ('　', false)).map(_.map(_._1).mkString).filterNot(_ == "　")
   }
 
-  def formatRuby(content: String): String = content.
+  def spanSeq[A](seq: Seq[A])(p: A => Boolean): Seq[Seq[A]] = {
+    val (l, r) = seq.span(p)
+    (if (l.isEmpty) Seq() else Seq(l)) ++ (if (r.isEmpty) Seq() else spanSeq(r)(!p(_)))
+  }
+
+  def formatVoice(line: String): String =
+    if ((countNonRuby(line) <= voiceWidth + 1) && !line.dropRight(1).exists(periods.contains(_)) && line.lastOption.contains('。')) {
+      line.dropRight(1)
+    } else {
+      line
+    }
+
+  def formatRuby(line: String): String = line.
     replace("｜", "<ruby>").
     replace("《", "<rt>").
     replace("》", "</rt></ruby>")
+
+  def countNonRuby(line: String): Int = line.
+    replace("｜", "").
+    replaceAll("《.*?》", "").
+    length
 }

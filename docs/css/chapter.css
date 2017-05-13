@@ -16,16 +16,15 @@
   border-radius: 1em;
   padding: 0.5em;
   clear: both;
+  max-width: 20em;
 }
 
 .voice-left {
-  margin-right: 4em;
   border-top-left-radius: 0;
   float: left;
 }
 
 .voice-right {
-  margin-left: 4em;
   border-top-right-radius: 0;
   float: right;
 }
