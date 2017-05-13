@@ -82,8 +82,8 @@ body {
 }
 
 #menu {
-  height: 2.5em;
-  line-height: 2.5em;
+  height: 3em;
+  line-height: 3em;
   padding: 0 calc(50% - 320px);
   width: 100%;
   font-size: 24px;
