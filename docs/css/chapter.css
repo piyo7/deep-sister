@@ -61,7 +61,7 @@
   clear: both;
 }
 
-.sectionIndex a {
+.sectionIndex span {
   left: 240px;
   padding-top: 1.2em;
   width: 160px;
