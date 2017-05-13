@@ -61,14 +61,14 @@
 .sectionIndex {
   margin-bottom: 3em;
   border-bottom: 2px solid #404040;
-  padding-top: 3em;
+  padding-top: 3.5em;
   position: relative;
   clear: both;
 }
 
 .sectionIndex span {
   left: 240px;
-  padding-top: 1.2em;
+  padding-top: 1.55em;
   width: 160px;
   position: absolute;
   font-size: 1.5em;
@@ -88,6 +88,8 @@
 
 #menu-center:hover #menu-section {
   visibility: visible;
+  opacity: 1;
+  transition: opacity 0.5s ease;
 }
 
 #menu-section {
@@ -95,6 +97,7 @@
   left: -120px;
   position: relative;
   visibility: hidden;
+  opacity: 0;
   background: #808080;
   display: flex;
   flex-wrap: wrap;
@@ -103,5 +106,6 @@
 
 #menu-section li {
   height: 2em;
+  line-height: 2em;
   width: 80px;
 }
