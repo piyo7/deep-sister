@@ -53,7 +53,7 @@
   clear: both;
 }
 
-#section-01 {
+#\30\31 {
   margin-bottom: 0;
   border-bottom: 0;
 }
@@ -95,6 +95,7 @@
   left: -120px;
   position: relative;
   visibility: hidden;
+  background: #808080;
   display: flex;
   flex-wrap: wrap;
   list-style: none;
@@ -103,5 +104,4 @@
 #menu-section li {
   height: 2em;
   width: 80px;
-  background: #808080;
 }
