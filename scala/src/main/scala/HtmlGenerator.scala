@@ -28,7 +28,7 @@ object HtmlGenerator {
 
     for ((chapter, nextChapter) <- novel.chapters.zipAll(novel.chapters.slice(1, 6).map(Some(_)), novel.chapters.last, None)) {
       val chat = (for ((section, i) <- chapter.sections.zipWithIndex) yield {
-        (if (i > 0) f"""<div class="sectionIndex""><span>§</span></div>""" else "") +:
+        (if (i > 0) f"""<div class="sectionIndex"><span>§</span></div>""" else "") +:
           (for (paragraph <- section.paragraphs) yield {
             (paragraph, section.kind) match {
               case (v: Voice, _) =>
