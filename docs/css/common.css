@@ -39,7 +39,7 @@ body {
 }
 
 #sns-hatebu a:hover {
-  background-color: #00A4DE;
+  background: #00A4DE;
   color: #fbfbfb;
 }
 
@@ -48,7 +48,7 @@ body {
 }
 
 #sns-facebook a:hover {
-  background-color: #4267B2;
+  background: #4267B2;
   color: #fbfbfb;
 }
 
@@ -57,7 +57,7 @@ body {
 }
 
 #sns-twitter a:hover {
-  background-color: #1B95E0;
+  background: #1B95E0;
   color: #fbfbfb;
 }
 
@@ -66,7 +66,7 @@ body {
 }
 
 #sns-line a:hover {
-  background-color: #00B900;
+  background: #00B900;
   color: #fbfbfb;
 }
 
