@@ -47,12 +47,21 @@ object HtmlGenerator {
                   Some(f"char${v.character}%02d")
                 ).flatten
 
-                for {
-                  line <- v.lines
-                  l <- splitVoice(line + (line.lastOption match {
+                val lines = v.lines.init :+
+                  (v.lines.last + (v.lines.last.lastOption match {
                     case Some(last) if (last.toString.getBytes.length > 1) && !periods.contains(last) => "。"
                     case _ => ""
                   }))
+
+                for {
+                  l <- if (v.character != 2) {
+                    for {
+                      line <- lines
+                      l <- splitVoice(line)
+                    } yield l
+                  } else {
+                    Seq((lines.init.map(line => line + (if (line.lastOption.contains('。')) "" else "　")) :+ lines.last).mkString)
+                  }
                 } yield {
                   f"""<p class="${classes.mkString(" ")}">${formatRuby(formatVoice(l))}</p>"""
                 }
@@ -125,17 +134,37 @@ object HtmlGenerator {
       }
       (char, bracket.reduce(_ || _))
     }
-    spanSeq(markedLine)(_ == ('　', false)).map(_.map(_._1).mkString).filterNot(_ == "　")
+
+    for {
+      ml1 <- recursiveSpan(markedLine)(_ == ('　', false)) if ml1.map(_._1) != Seq('　')
+      mls = recursiveSpan(ml1)(pair => periods.contains(pair._1) && !pair._2)
+      ml2 <- recursiveSplit(mls, voiceWidth * 2)(ml => ml.size <= 2 || ml.map(_._1).headOption.exists(periods.contains(_)))
+    } yield ml2.map(_._1).mkString
   }
 
-  def spanSeq[A](seq: Seq[A])(p: A => Boolean): Seq[Seq[A]] = {
+  def recursiveSpan[A](seq: Seq[A])(p: A => Boolean): Seq[Seq[A]] = {
     val (l, r) = seq.span(p)
-    (if (l.isEmpty) Seq() else Seq(l)) ++ (if (r.isEmpty) Seq() else spanSeq(r)(!p(_)))
+    (if (l.isEmpty) Seq() else Seq(l)) ++ (if (r.isEmpty) Seq() else recursiveSpan(r)(!p(_)))
+  }
+
+  def recursiveSplit[A](seqs: Seq[Seq[A]], thresholdSize: Int)(extension: Seq[A] => Boolean): Seq[Seq[A]] = {
+    seqs.map(_.size).scan(0)(_ + _).indexWhere(_ > thresholdSize) match {
+      case i if i > 0 =>
+        seqs.drop(i).indexWhere(!extension(_)) match {
+          case j if j >= 0 =>
+            val (l, r) = seqs.splitAt(i + j)
+            Seq(l.flatten) ++ recursiveSplit(r, thresholdSize)(extension)
+          case _ =>
+            Seq(seqs.flatten)
+        }
+      case _ =>
+        Seq(seqs.flatten)
+    }
   }
 
   def formatVoice(line: String): String =
-    if ((countNonRuby(line) <= voiceWidth + 1) && !line.dropRight(1).exists(periods.contains(_)) && line.lastOption.contains('。')) {
-      line.dropRight(1)
+    if ((countNonRuby(line) <= voiceWidth + 1) && !line.init.exists(periods.contains(_)) && line.lastOption.contains('。')) {
+      line.init
     } else {
       line
     }
