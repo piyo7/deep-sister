@@ -22,7 +22,7 @@ object HtmlGenerator {
 
     for (chapter <- novel.chapters) {
       println(chapter.title)
-      println(chapter.sections.flatMap(_.paragraphs).collect { case v: Voice => v.character }.distinct.sorted.mkString(", "))
+      println(chapter.sections.flatMap(_.paragraphs).collect { case v: Voice => v.character }.distinct.mkString(", "))
       println()
     }
 
