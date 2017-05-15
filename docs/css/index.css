@@ -34,7 +34,7 @@
   width: 2em;
   border-radius: 0;
   filter: brightness(95%);
-  transition: all .4s ease-in;
+  transition: all 0.2s ease-in;
 }
 
 .badges {
