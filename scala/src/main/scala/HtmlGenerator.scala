@@ -118,7 +118,7 @@ object HtmlGenerator {
   }
 
   private val periods = "。！？♪♡♥　"
-  private val voiceWidth = 20
+  private val voiceWidth = 18
 
   def splitVoice(line: String): Seq[String] = {
     val bracket = mutable.Seq.fill(3)(false)
@@ -177,5 +177,6 @@ object HtmlGenerator {
   def countNonRuby(line: String): Int = line.
     replace("｜", "").
     replaceAll("《.*?》", "").
-    length
+    map(c => if (c.toString.getBytes.length > 1) 1 else 0.5).
+    sum.ceil.toInt
 }

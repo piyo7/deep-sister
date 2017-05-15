@@ -1,7 +1,7 @@
 #chat {
   padding: 48px calc(50% - 320px) 0 calc(50% - 320px);
   width: 640px;
-  font-size: 24px;
+  font-size: 26px;
   position: absolute;
   flex-flow: column;
   list-style: none;
@@ -16,7 +16,7 @@
   border-radius: 1em;
   padding: 0.5em;
   clear: both;
-  max-width: 20em;
+  max-width: 18em;
 }
 
 .voice-left {
@@ -63,7 +63,7 @@
 }
 
 .sectionIndex {
-  margin-bottom: 3em;
+  margin-bottom: 4em;
   border-bottom: 2px solid #404040;
   padding-top: 4em;
   position: relative;
