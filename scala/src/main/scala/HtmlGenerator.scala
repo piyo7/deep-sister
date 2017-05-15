@@ -13,6 +13,7 @@ object HtmlGenerator {
       "03_魔法少女ふわふわの夏.txt",
       "04_流星シンドローム.txt",
       "05_DELETEME.txt",
+      "06_蓬莱にごり酒.txt",
       "credit.txt",
       "XX_「わたくしの一生を賭けて、あなたの幸せを計算してみせて？」.txt"
     )} yield Using(Source.fromResource(fileName))(_.mkString)).mkString
