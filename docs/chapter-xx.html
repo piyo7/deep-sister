@@ -284,6 +284,17 @@
       
     </li>
   </ul>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    $('#menu-center').on('mouseenter touchstart', function () {
+      $(this).addClass('hover');
+    }).on('mouseleave', function () {
+      $(this).removeClass('hover');
+    });
+    $('#chat').on('touchstart', function() {
+      $('#menu-center').removeClass('hover');
+    });
+  </script>
 </body>
 
 </html>
