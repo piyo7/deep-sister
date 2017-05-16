@@ -140,10 +140,13 @@
   </ul>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript">
-    $('.chapter').on('mouseenter touchstart', function () {
+    $('.chapter, .extra').on('mouseenter', function () {
       $(this).addClass('hover');
     }).on('mouseleave', function () {
       $(this).removeClass('hover');
+    }).on('touchstart', function () {
+      $(this).addClass('hover');
+      $('.chapter, .extra').not(this).removeClass('hover');
     });
   </script>
 </body>
