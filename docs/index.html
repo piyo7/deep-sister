@@ -138,6 +138,14 @@
       <i class="fa fa-heartbeat"></i>
     </li>
   </ul>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    $('.chapter').on('touchstart', function () {
+      $(this).addClass('hover');
+    }).on('touchend', function () {
+      $(this).removeClass('hover');
+    });
+  </script>
 </body>
 
 </html>

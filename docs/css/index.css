@@ -27,7 +27,7 @@
   display: block;
 }
 
-.chapter:hover .badge {
+.chapter:hover .badge, .chapter.hover .badge {
   margin-left: 0;
   margin-right: 0;
   border: 0 solid #fbfbfb;
