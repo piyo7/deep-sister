@@ -100,13 +100,13 @@
   display: flex;
   flex-wrap: wrap;
   list-style: none;
-  transition: all 0.4s ease;
+  transition: all 0.2s ease-in;
 }
 
 #menu-center.hover #menu-section {
   visibility: visible;
   opacity: 1;
-  transition: all 0.4s ease;
+  transition: all 0.2s ease-in;
 }
 
 #menu-section li {
