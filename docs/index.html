@@ -140,9 +140,9 @@
   </ul>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript">
-    $('.chapter').on('touchstart', function () {
+    $('.chapter').on('mouseenter touchstart', function () {
       $(this).addClass('hover');
-    }).on('touchend', function () {
+    }).on('mouseleave', function () {
       $(this).removeClass('hover');
     });
   </script>

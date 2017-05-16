@@ -27,16 +27,6 @@
   display: block;
 }
 
-.chapter:hover .badge, .chapter.hover .badge {
-  margin-left: 0;
-  margin-right: 0;
-  border: 0 solid #fbfbfb;
-  width: 2em;
-  border-radius: 0;
-  filter: brightness(95%);
-  transition: all 0.2s ease-in;
-}
-
 .badges {
   width: 100%;
   height: 1em;
@@ -52,6 +42,16 @@
   height: 0.4em;
   width: 0.4em;
   border-radius: 50%;
+  transition: all 0.2s ease-in;
+}
+
+.chapter.hover .badge {
+  margin-left: 0;
+  margin-right: 0;
+  border: 0 solid #fbfbfb;
+  width: 2em;
+  border-radius: 0;
+  filter: brightness(95%);
   transition: all 0.2s ease-in;
 }
 
