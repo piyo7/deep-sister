@@ -1,3 +1,5 @@
+.char99 { background-color: hsla(0, 0%, 0%, 0); }
+
 .char00 { background-color: hsl(  0,   0%, 85%); }
 .char01 { background-color: hsl(180, 100%, 85%); }
 .char02 { background-color: hsl( 30, 100%, 85%); }
