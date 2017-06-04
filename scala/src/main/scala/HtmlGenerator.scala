@@ -2,7 +2,7 @@ import java.io.PrintWriter
 import java.net.URLEncoder
 
 import scala.collection.mutable
-import scala.io.Source
+import scala.io.{Codec, Source}
 
 object HtmlGenerator {
   def main(args: Array[String]) {
@@ -16,7 +16,7 @@ object HtmlGenerator {
       "06_蓬莱にごり酒.txt",
       "credit.txt",
       "XX_「わたくしの一生を賭けて、あなたの幸せを計算してみせて？」.txt"
-    )} yield Using(Source.fromResource(fileName))(_.mkString)).mkString
+    )} yield Using(Source.fromResource(fileName)(Codec("UTF-8")))(_.mkString)).mkString
 
     val novel = Novel.parse("深層の令妹 ζ(*ﾟｗﾟ)ζ", source)
 
@@ -26,7 +26,7 @@ object HtmlGenerator {
       println()
     }
 
-    val template = Using(Source.fromResource("template.html"))(_.mkString)
+    val template = Using(Source.fromResource("template.html")(Codec("UTF-8")))(_.mkString)
 
     for ((chapter, nextChapter) <- novel.chapters.zipAll(novel.chapters.slice(1, 6).map(Some(_)), novel.chapters.last, None)) {
       val chat = (for ((section, i) <- chapter.sections.zipWithIndex) yield {
