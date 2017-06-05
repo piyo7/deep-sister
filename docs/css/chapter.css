@@ -51,6 +51,9 @@
 
 .stamp {
   border: 2px solid #808080;
+  height: 320px;
+  width: 320px;
+  border-radius: 2em;
 }
 
 #chat hr {
