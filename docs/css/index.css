@@ -57,11 +57,11 @@
 }
 
 .extra {
-  height: 4.2em;
+  height: 3em;
   width: 100%;
-  line-height: 4.2em;
+  line-height: 3em;
   position: relative;
-  font-size: 20px;
+  font-size: 28px;
 }
 
 .extra p {
@@ -81,6 +81,7 @@
 }
 
 .epilogue {
+  font-size: 20px;
   background: linear-gradient(to right, hsla(30, 100%, 90%, 0), hsl(120, 100%, 90%), hsl(210, 100%, 90%), hsl(300, 100%, 90%), hsla(30, 100%, 90%, 0));
 }
 
