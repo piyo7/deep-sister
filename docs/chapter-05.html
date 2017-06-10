@@ -670,19 +670,17 @@
     <li id="menu-center">
       蓬莱にごり酒 <i class="fa fa-angle-down"></i>
       <ul id="menu-section">
-        <li><a href="#01">01</a></li>
-        <li><a href="#02">02</a></li>
-        <li><a href="#03">03</a></li>
-        <li><a href="#04">04</a></li>
-        <li><a href="#05">05</a></li>
-        <li><a href="#06">06</a></li>
-        <li><a href="#07">07</a></li>
-        <li><a href="#08">08</a></li>
+        <li><a href="#01">1</a></li>
+        <li><a href="#02">2</a></li>
+        <li><a href="#03">3</a></li>
+        <li><a href="#04">4</a></li>
+        <li><a href="#05">5</a></li>
+        <li><a href="#06">6</a></li>
+        <li><a href="#07">7</a></li>
+        <li><a href="#08">8</a></li>
       </ul>
     </li>
-    <li id="menu-right">
-      
-    </li>
+    <li id="menu-right"></li>
   </ul>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript">
@@ -691,9 +689,20 @@
     }).on('mouseleave', function () {
       $(this).removeClass('hover');
     });
-    $('#chat').on('touchstart', function() {
+
+    function menuRight() {
       $('#menu-center').removeClass('hover');
-    });
+      let i = 1;
+      while (true) {
+        const offset = $('#' + ('00' + i).slice(-2)).offset();
+        if (offset == null || offset.top > window.pageYOffset) break;
+        i++;
+      }
+      $('#menu-right').text(Math.max(1, i - 1));
+    }
+
+    menuRight();
+    $(window).on('scroll', menuRight);
   </script>
 </body>
 
