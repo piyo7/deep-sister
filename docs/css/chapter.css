@@ -80,6 +80,7 @@
 .section-index span {
   left: 240px;
   padding-top: 1.9em;
+  height: 1em;
   width: 160px;
   position: absolute;
   font-size: 1.5em;
