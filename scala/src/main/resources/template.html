@@ -63,9 +63,7 @@
     <li id="menu-center">
       __MENU__
     </li>
-    <li id="menu-right">
-      __NEXT__
-    </li>
+    <li id="menu-right"></li>
   </ul>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript">
@@ -74,9 +72,20 @@
     }).on('mouseleave', function () {
       $(this).removeClass('hover');
     });
-    $('#chat').on('touchstart', function() {
+
+    function menuRight() {
       $('#menu-center').removeClass('hover');
-    });
+      let i = 1;
+      while (true) {
+        const offset = $('#' + ('00' + i).slice(-2)).offset();
+        if (offset == null || offset.top > window.pageYOffset) break;
+        i++;
+      }
+      $('#menu-right').text(Math.max(1, i - 1));
+    }
+
+    menuRight();
+    $(window).on('scroll', menuRight);
   </script>
 </body>
 

@@ -85,7 +85,7 @@ object HtmlGenerator {
 
       val menu = chapter.title + (if (chapter.sections.size > 1) {
         (Seq(""" <i class="fa fa-angle-down"></i>""", """<ul id="menu-section">""") ++
-          (1 to chapter.sections.size).map(i => f"""<li><a href="#$i%02d">$i%02d</a></li>""").map(" " * 2 + _) :+
+          (1 to chapter.sections.size).map(i => f"""<li><a href="#$i%02d">$i</a></li>""").map(" " * 2 + _) :+
           """</ul>"""
           ).mkString("\n" + " " * 6)
       } else "")
