@@ -91,10 +91,6 @@
   transition: all 0.1s ease-in;
 }
 
-.back-sister {
-  background: hsl(30, 100%, 85%);
-}
-
 .back-rainbow {
   background: linear-gradient(to right, hsla(30, 100%, 90%, 0), hsl(120, 100%, 90%), hsl(210, 100%, 90%), hsl(300, 100%, 90%), hsla(30, 100%, 90%, 0));
 }
@@ -107,8 +103,4 @@ hr {
   height: 2px;
   width: 100%;
   background: linear-gradient(to right, #fbfbfb, #a0a0a0, #a0a0a0, #fbfbfb);
-}
-
-#sns {
-  padding: 3em 0 1em 0;
 }
