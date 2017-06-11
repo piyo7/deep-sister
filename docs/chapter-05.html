@@ -648,51 +648,45 @@
     <p class="voice-left telephone char03">あ、あっあっ、もうアドレナリン切れ……。</p>
     <p class="voice-right char01">えーと、その命中地点。正確にはどこですか？</p>
     <p class="voice-left telephone char03">風里のカラクリ屋敷。そういえば昔そこで、……得体の知れないナニカと対局した気がいたします。</p>
-    <p class="next-chapter">（了）<br><br><a href="./"><i class="fa fa-home"></i>『目次』</a></p>
+    <p class="next-chapter">（了）<br><br><a class="hoverable" href="./"><i class="fa fa-home"></i>『目次』</a></p>
     <ul id="sns">
       <li id="sns-hatebu">
-        <a href="https://b.hatena.ne.jp/entry/https://piyo7.github.io/deep-sister/chapter-05" target="_blank"><i class="fa icon-hatebu"></i> ブクマ</a>
+        <a class="hoverable" href="https://b.hatena.ne.jp/entry/https://piyo7.github.io/deep-sister/chapter-05" target="_blank"><i class="fa icon-hatebu"></i> ブクマ</a>
       </li>
       <li id="sns-facebook">
-        <a href="https://www.facebook.com/sharer.php?u=https://piyo7.github.io/deep-sister/chapter-05" target="_blank"><i class="fa fa-facebook-official"></i> シェア</a>
+        <a class="hoverable" href="https://www.facebook.com/sharer.php?u=https://piyo7.github.io/deep-sister/chapter-05" target="_blank"><i class="fa fa-facebook-official"></i> シェア</a>
       </li>
       <li id="sns-twitter">
-        <a href="https://twitter.com/intent/tweet?url=https://piyo7.github.io/deep-sister/chapter-05&text=%E8%93%AC%E8%8E%B1%E3%81%AB%E3%81%94%E3%82%8A%E9%85%92%20-%20%E6%B7%B1%E5%B1%A4%E3%81%AE%E4%BB%A4%E5%A6%B9%20%CE%B6%28*%EF%BE%9F%EF%BD%97%EF%BE%9F%29%CE%B6&related=moroha_yumekiri" target="_blank"><i class="fa fa-twitter"></i> ツイート</a>
+        <a class="hoverable" href="https://twitter.com/intent/tweet?url=https://piyo7.github.io/deep-sister/chapter-05&text=%E8%93%AC%E8%8E%B1%E3%81%AB%E3%81%94%E3%82%8A%E9%85%92%20-%20%E6%B7%B1%E5%B1%A4%E3%81%AE%E4%BB%A4%E5%A6%B9%20%CE%B6%28*%EF%BE%9F%EF%BD%97%EF%BE%9F%29%CE%B6&related=moroha_yumekiri"
+          target="_blank"><i class="fa fa-twitter"></i> ツイート</a>
       </li>
       <li id="sns-line">
-        <a href="https://line.me/R/msg/text/?%E8%93%AC%E8%8E%B1%E3%81%AB%E3%81%94%E3%82%8A%E9%85%92%20-%20%E6%B7%B1%E5%B1%A4%E3%81%AE%E4%BB%A4%E5%A6%B9%20%CE%B6%28*%EF%BE%9F%EF%BD%97%EF%BE%9F%29%CE%B6%20https://piyo7.github.io/deep-sister/chapter-05" target="_blank"><i class="fa icon-line"></i> 送る</a>
+        <a class="hoverable" href="https://line.me/R/msg/text/?%E8%93%AC%E8%8E%B1%E3%81%AB%E3%81%94%E3%82%8A%E9%85%92%20-%20%E6%B7%B1%E5%B1%A4%E3%81%AE%E4%BB%A4%E5%A6%B9%20%CE%B6%28*%EF%BE%9F%EF%BD%97%EF%BE%9F%29%CE%B6%20https://piyo7.github.io/deep-sister/chapter-05" target="_blank"><i class="fa icon-line"></i> 送る</a>
       </li>
     </ul>
   </div>
   <ul id="menu">
     <li id="menu-left">
-      <a href="./">目次</a>
+      <a class="hoverable" href="./">目次</a>
     </li>
-    <li id="menu-center">
+    <li class="hoverable" id="menu-center">
       蓬莱にごり酒 <i class="fa fa-angle-down"></i>
       <ul id="menu-section">
-        <li><a href="#01">1</a></li>
-        <li><a href="#02">2</a></li>
-        <li><a href="#03">3</a></li>
-        <li><a href="#04">4</a></li>
-        <li><a href="#05">5</a></li>
-        <li><a href="#06">6</a></li>
-        <li><a href="#07">7</a></li>
-        <li><a href="#08">8</a></li>
+        <li><a class="hoverable" href="#01">1</a></li>
+        <li><a class="hoverable" href="#02">2</a></li>
+        <li><a class="hoverable" href="#03">3</a></li>
+        <li><a class="hoverable" href="#04">4</a></li>
+        <li><a class="hoverable" href="#05">5</a></li>
+        <li><a class="hoverable" href="#06">6</a></li>
+        <li><a class="hoverable" href="#07">7</a></li>
+        <li><a class="hoverable" href="#08">8</a></li>
       </ul>
     </li>
     <li id="menu-right"></li>
   </ul>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript">
-    $('#menu-center').on('mouseenter touchstart', function () {
-      $(this).addClass('hover');
-    }).on('mouseleave', function () {
-      $(this).removeClass('hover');
-    });
-
     function menuRight() {
-      $('#menu-center').removeClass('hover');
       let i = 1;
       while (true) {
         const offset = $('#' + ('00' + i).slice(-2)).offset();
@@ -703,7 +697,18 @@
     }
 
     menuRight();
-    $(window).on('scroll', menuRight);
+    $('.hoverable').on('mouseenter', function () {
+      $(this).addClass('hover');
+    }).on('mouseleave', function () {
+      $(this).removeClass('hover');
+    }).on('touchstart', function () {
+      $(this).addClass('hover');
+      $('.hoverable').not(this).removeClass('hover');
+    });
+    $(window).on('scroll', function () {
+      $('.hoverable').removeClass('hover');
+      menuRight();
+    });
   </script>
 </body>
 
