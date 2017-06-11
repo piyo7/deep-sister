@@ -114,6 +114,7 @@
 
 #menu-section {
   width: 640px;
+  top: -1px;
   left: -120px;
   position: relative;
   visibility: hidden;
