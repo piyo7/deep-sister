@@ -41,7 +41,7 @@ body {
   color: #00A4DE;
 }
 
-#sns-hatebu a:hover {
+#sns-hatebu a.hover {
   background: #00A4DE;
   color: #fbfbfb;
 }
@@ -50,7 +50,7 @@ body {
   color: #4267B2;
 }
 
-#sns-facebook a:hover {
+#sns-facebook a.hover {
   background: #4267B2;
   color: #fbfbfb;
 }
@@ -59,7 +59,7 @@ body {
   color: #1B95E0;
 }
 
-#sns-twitter a:hover {
+#sns-twitter a.hover {
   background: #1B95E0;
   color: #fbfbfb;
 }
@@ -68,7 +68,7 @@ body {
   color: #00B900;
 }
 
-#sns-line a:hover {
+#sns-line a.hover {
   background: #00B900;
   color: #fbfbfb;
 }
@@ -105,7 +105,7 @@ body {
   display: block;
 }
 
-#menu a:hover {
+#menu a.hover {
   color: black;
   font-weight: bold;
 }

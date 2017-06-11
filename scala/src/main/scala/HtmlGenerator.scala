@@ -85,7 +85,7 @@ object HtmlGenerator {
 
       val menu = chapter.title + (if (chapter.sections.size > 1) {
         (Seq(""" <i class="fa fa-angle-down"></i>""", """<ul id="menu-section">""") ++
-          (1 to chapter.sections.size).map(i => f"""<li><a href="#$i%02d">$i</a></li>""").map(" " * 2 + _) :+
+          (1 to chapter.sections.size).map(i => f"""<li><a class="hoverable" href="#$i%02d">$i</a></li>""").map(" " * 2 + _) :+
           """</ul>"""
           ).mkString("\n" + " " * 6)
       } else "")
@@ -101,8 +101,8 @@ object HtmlGenerator {
 
       val share = URLEncoder.encode(chapter.title + " - " + novel.title, "UTF-8").replace("+", "%20")
 
-      val next = nextChapter.map(c => f"""<a href="${c.path}"><i class="fa fa-volume-control-phone"></i>『${c.title}』</a>""").
-        getOrElse("""<a href="./"><i class="fa fa-home"></i>『目次』</a>""")
+      val next = nextChapter.map(c => f"""<a class="hoverable" href="${c.path}"><i class="fa fa-volume-control-phone"></i>『${c.title}』</a>""").
+        getOrElse("""<a class="hoverable" href="./"><i class="fa fa-home"></i>『目次』</a>""")
 
       Using(new PrintWriter("../docs/" + chapter.path + ".html", "UTF-8")) {
         _.write(template.

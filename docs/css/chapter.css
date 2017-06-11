@@ -59,7 +59,7 @@
   border-radius: 1.5em;
 }
 
-.next-chapter a:hover {
+.next-chapter a.hover {
   background: hsl(0, 0%, 85%);
 }
 
