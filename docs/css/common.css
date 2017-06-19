@@ -7,6 +7,7 @@
   border: 0;
   padding: 0;
   -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+  font-family: "Mplus 1p";
 }
 
 body {
@@ -103,6 +104,7 @@ body {
   color: white;
   text-decoration: none;
   display: block;
+  font-family: sans-serif;
 }
 
 #menu a.hover {
@@ -115,9 +117,13 @@ body {
   background: #a0a0a0;
 }
 
+#menu-right {
+  font-family: sans-serif;  
+}
+
 #menu-center {
   width: 400px;
   background: #808080;
   white-space: nowrap;
-  font-weight: bold;
+  font-weight: 500;
 }
