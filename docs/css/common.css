@@ -104,17 +104,16 @@ body {
   color: white;
   text-decoration: none;
   display: block;
-  font-family: sans-serif;
-}
-
-#menu a.hover {
-  color: black;
-  font-weight: bold;
 }
 
 #menu-left, #menu-right {
   width: 120px;
   background: #a0a0a0;
+}
+
+#menu-left a.hover {
+  color: black;
+  font-weight: 500;
 }
 
 #menu-right {
@@ -126,4 +125,13 @@ body {
   background: #808080;
   white-space: nowrap;
   font-weight: 500;
+}
+
+#menu-section a {
+  font-family: sans-serif;
+}
+
+#menu-section a.hover {
+  color: black;
+  font-weight: bold;
 }
