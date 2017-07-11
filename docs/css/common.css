@@ -7,7 +7,7 @@
   border: 0;
   padding: 0;
   -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
-  font-family: "Mplus 1p";
+  font-family: arial, "Mplus 1p", sans-serif;
 }
 
 body {
@@ -116,19 +116,11 @@ body {
   font-weight: 500;
 }
 
-#menu-right {
-  font-family: sans-serif;  
-}
-
 #menu-center {
   width: 400px;
   background: #808080;
   white-space: nowrap;
   font-weight: 500;
-}
-
-#menu-section a {
-  font-family: sans-serif;
 }
 
 #menu-section a.hover {
