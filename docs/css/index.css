@@ -10,7 +10,6 @@
   height: 3em;
   width: 100%;
   position: relative;
-  font-size: 28px;
 }
 
 .chapter p {
@@ -61,7 +60,6 @@
   width: 100%;
   line-height: 3em;
   position: relative;
-  font-size: 28px;
 }
 
 .extra p {
@@ -93,10 +91,6 @@
 
 .back-rainbow {
   background: linear-gradient(to right, hsla(30, 100%, 90%, 0), hsl(120, 100%, 90%), hsl(210, 100%, 90%), hsl(300, 100%, 90%), hsla(30, 100%, 90%, 0));
-}
-
-.epilogue {
-  font-size: 20px;
 }
 
 hr {

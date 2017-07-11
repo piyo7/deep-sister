@@ -1,7 +1,6 @@
 #chat {
   padding: 48px calc(50% - 320px) 0 calc(50% - 320px);
   width: 640px;
-  font-size: 26px;
   position: absolute;
   flex-flow: column;
   list-style: none;
@@ -97,7 +96,7 @@
 
 .section-index span {
   left: 240px;
-  padding-top: 1.9em;
+  padding-top: 2em;
   height: 1em;
   width: 160px;
   position: absolute;

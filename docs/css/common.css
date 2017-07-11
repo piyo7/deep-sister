@@ -8,6 +8,7 @@
   padding: 0;
   -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
   font-family: arial, "Mplus 1p", sans-serif;
+  font-size: 26px;
 }
 
 body {
@@ -33,7 +34,6 @@ body {
 #sns-hatebu, #sns-facebook, #sns-twitter, #sns-line {
   width: 160px;
   padding: 0.5em 0;
-  font-size: 24px;
   height: 2em;
   line-height: 2em;
 }
@@ -91,7 +91,6 @@ body {
   line-height: 3em;
   padding: 0 calc(50% - 320px);
   width: 100%;
-  font-size: 24px;
   position: fixed;
   color: white;
   text-align: center;
@@ -113,14 +112,12 @@ body {
 
 #menu-left a.hover {
   color: black;
-  font-weight: 500;
 }
 
 #menu-center {
   width: 400px;
   background: #808080;
   white-space: nowrap;
-  font-weight: 500;
 }
 
 #menu-section a.hover {
