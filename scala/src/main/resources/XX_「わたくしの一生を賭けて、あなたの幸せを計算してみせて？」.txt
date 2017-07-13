@@ -1,4 +1,4 @@
-# あなたの幸せを計算してみせて chapter-xx
+# Memory.gc() chapter-xx
 
 ## : ∽
 
