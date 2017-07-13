@@ -83,11 +83,11 @@ object HtmlGenerator {
           }).flatten
       }).flatten
 
-      val menu = chapter.title + (if (chapter.sections.size > 1) {
-        (Seq(""" <i class="fa fa-angle-down"></i>""", """<ul id="menu-section">""") ++
+      val index = (if (chapter.sections.size > 1) {
+        ("""<ul id="menu-index">""" +:
           (1 to chapter.sections.size).map(i => f"""<li><a class="hoverable" href="#$i%02d">$i</a></li>""").map(" " * 2 + _) :+
           """</ul>"""
-          ).mkString("\n" + " " * 6)
+        ).mkString("\n" + " " * 6)
       } else "")
 
       val lead = chapter.sections.flatMap(_.paragraphs).collect {
@@ -110,7 +110,8 @@ object HtmlGenerator {
           replace("__PATH__", chapter.path).
           replace("__NOVEL__", novel.title).
           replace("__CHAPTER__", chapter.title).
-          replace("__MENU__", menu).
+          replace("__MENU__", chapter.title).
+          replace("__INDEX__", index).
           replace("__LEAD__", lead).
           replace("__CHAT__", chat.mkString("\n" + " " * 4)).
           replace("__SHARE__", share).

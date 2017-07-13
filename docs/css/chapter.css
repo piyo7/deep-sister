@@ -111,10 +111,10 @@
   border-top: 2px solid #c0c0c0;
 }
 
-#menu-section {
+#menu-index {
   width: 640px;
   top: -1px;
-  left: -120px;
+  left: -520px;
   position: relative;
   visibility: hidden;
   opacity: 0;
@@ -122,16 +122,16 @@
   display: flex;
   flex-wrap: wrap;
   list-style: none;
-  transition: all 0.2s ease-in;
+  transition: all 0.4s ease-in;
 }
 
-#menu-center.hover #menu-section {
+#menu-right.hover #menu-index {
   visibility: visible;
   opacity: 1;
   transition: all 0.2s ease-in;
 }
 
-#menu-section li {
+#menu-index li {
   height: 2em;
   line-height: 2em;
   width: 106px;
