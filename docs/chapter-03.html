@@ -624,9 +624,10 @@
     <li id="menu-left">
       <a class="hoverable" href="./">目次</a>
     </li>
-    <li class="hoverable" id="menu-center">
-      魔法少女ふわふわの夏 <i class="fa fa-angle-down"></i>
-      <ul id="menu-section">
+    <li id="menu-center">魔法少女ふわふわの夏</li>
+    <li class="hoverable" id="menu-right">
+      <i class="fa fa-caret-down"></i> <span id="menu-number"></span>
+      <ul id="menu-index">
         <li><a class="hoverable" href="#01">1</a></li>
         <li><a class="hoverable" href="#02">2</a></li>
         <li><a class="hoverable" href="#03">3</a></li>
@@ -635,7 +636,6 @@
         <li><a class="hoverable" href="#06">6</a></li>
       </ul>
     </li>
-    <li id="menu-right"></li>
   </ul>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript">
@@ -646,7 +646,7 @@
         if (offset == null || offset.top > window.pageYOffset) break;
         i++;
       }
-      $('#menu-right').text(Math.max(1, i - 1));
+      $('#menu-number').text(Math.max(1, i - 1));
     }
 
     menuRight();

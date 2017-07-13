@@ -81,10 +81,11 @@
     <li id="menu-left">
       <a class="hoverable" href="./">目次</a>
     </li>
-    <li class="hoverable" id="menu-center">
-      くれじっと
+    <li id="menu-center">くれじっと</li>
+    <li class="hoverable" id="menu-right">
+      <i class="fa fa-caret-down"></i> <span id="menu-number"></span>
+      
     </li>
-    <li id="menu-right"></li>
   </ul>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript">
@@ -95,7 +96,7 @@
         if (offset == null || offset.top > window.pageYOffset) break;
         i++;
       }
-      $('#menu-right').text(Math.max(1, i - 1));
+      $('#menu-number').text(Math.max(1, i - 1));
     }
 
     menuRight();

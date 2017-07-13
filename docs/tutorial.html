@@ -44,7 +44,7 @@
     <div class="section-index" id="01"></div>
     <p class="voice-right char00">なにこれ？</p>
     <p class="voice-left char02">ゆるふわチャット小説だよー</p>
-    <p class="voice-left char02">『深層の令妹 ζ(*ﾟｗﾟ)ζ』だよー</p>
+    <p class="voice-left char02">『<ruby>深層<rt>しんそう</rt></ruby>の<ruby>令妹<rt>れいまい</rt></ruby> ζ(*ﾟｗﾟ)ζ』だよー</p>
     <p class="voice-left char02">とりま、左上から目次に戻れるよー</p>
     <p class="voice-right char00">どう読むの？</p>
     <p class="voice-left char02">ふつーにチャットっぽく読めばいいんじゃないかなー。</p>
@@ -66,7 +66,7 @@
     <p class="voice-right telephone char01">私はたぶん３人目だと思うから♡</p>
     <p class="voice-right telephone char01">妹ちゃん<ruby>の３乗<rt>きゅーぶ</rt></ruby>♡</p>
     <p class="voice-left char02">そろそろボロ隠せなくなってきたから、この茶番さっさと終えるよー。</p>
-    <p class="voice-left char02">この小説、章ごとにページが分かれてるんだけど、長くてねー。スクロール大変だから、上の章題をタップするかマウスをかざすと節番号が表示されてねー、そこからジャンプできるよー。</p>
+    <p class="voice-left char02">この小説、章ごとにページが分かれてるんだけど、長くてねー。スクロール大変だから、右上の節番号をタップするかマウスをかざすとねー、数字リストからジャンプできるよー。</p>
     <p class="voice-left char02">じゃあねー</p>
     <p class="description"><br></p>
     <hr>
@@ -104,14 +104,14 @@
     <li id="menu-left">
       <a class="hoverable" href="./">目次</a>
     </li>
-    <li class="hoverable" id="menu-center">
-      ちゅーとりある <i class="fa fa-angle-down"></i>
-      <ul id="menu-section">
+    <li id="menu-center">ちゅーとりある</li>
+    <li class="hoverable" id="menu-right">
+      <i class="fa fa-caret-down"></i> <span id="menu-number"></span>
+      <ul id="menu-index">
         <li><a class="hoverable" href="#01">1</a></li>
         <li><a class="hoverable" href="#02">2</a></li>
       </ul>
     </li>
-    <li id="menu-right"></li>
   </ul>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript">
@@ -122,7 +122,7 @@
         if (offset == null || offset.top > window.pageYOffset) break;
         i++;
       }
-      $('#menu-right').text(Math.max(1, i - 1));
+      $('#menu-number').text(Math.max(1, i - 1));
     }
 
     menuRight();

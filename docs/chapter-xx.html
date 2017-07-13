@@ -2,7 +2,7 @@
 <html lang="ja">
 
 <head>
-  <title>あなたの幸せを計算してみせて - 深層の令妹 ζ(*ﾟｗﾟ)ζ</title>
+  <title>Memory.gc() - 深層の令妹 ζ(*ﾟｗﾟ)ζ</title>
   <meta charset="UTF-8">
   <meta name="description" content="…">
   <meta name="viewport" content="width=640">
@@ -10,7 +10,7 @@
   <meta property="og:type" content="article">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="深層の令妹 ζ(*ﾟｗﾟ)ζ">
-  <meta property="og:title" content="あなたの幸せを計算してみせて - 深層の令妹 ζ(*ﾟｗﾟ)ζ">
+  <meta property="og:title" content="Memory.gc() - 深層の令妹 ζ(*ﾟｗﾟ)ζ">
   <meta property="og:description" content="…">
   <meta property="og:image" content="https://piyo7.github.io/deep-sister/icon/deep-sister-1200x630.jpg">
   <meta property="og:image:width" content="1200">
@@ -251,11 +251,11 @@
         <a class="hoverable" href="https://www.facebook.com/sharer.php?u=https://piyo7.github.io/deep-sister/chapter-xx" target="_blank"><i class="fa fa-facebook-official"></i> シェア</a>
       </li>
       <li id="sns-twitter">
-        <a class="hoverable" href="https://twitter.com/intent/tweet?url=https://piyo7.github.io/deep-sister/chapter-xx&text=%E3%81%82%E3%81%AA%E3%81%9F%E3%81%AE%E5%B9%B8%E3%81%9B%E3%82%92%E8%A8%88%E7%AE%97%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9B%E3%81%A6%20-%20%E6%B7%B1%E5%B1%A4%E3%81%AE%E4%BB%A4%E5%A6%B9%20%CE%B6%28*%EF%BE%9F%EF%BD%97%EF%BE%9F%29%CE%B6&related=moroha_yumekiri"
+        <a class="hoverable" href="https://twitter.com/intent/tweet?url=https://piyo7.github.io/deep-sister/chapter-xx&text=Memory.gc%28%29%20-%20%E6%B7%B1%E5%B1%A4%E3%81%AE%E4%BB%A4%E5%A6%B9%20%CE%B6%28*%EF%BE%9F%EF%BD%97%EF%BE%9F%29%CE%B6&related=moroha_yumekiri"
           target="_blank"><i class="fa fa-twitter"></i> ツイート</a>
       </li>
       <li id="sns-line">
-        <a class="hoverable" href="https://line.me/R/msg/text/?%E3%81%82%E3%81%AA%E3%81%9F%E3%81%AE%E5%B9%B8%E3%81%9B%E3%82%92%E8%A8%88%E7%AE%97%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9B%E3%81%A6%20-%20%E6%B7%B1%E5%B1%A4%E3%81%AE%E4%BB%A4%E5%A6%B9%20%CE%B6%28*%EF%BE%9F%EF%BD%97%EF%BE%9F%29%CE%B6%20https://piyo7.github.io/deep-sister/chapter-xx" target="_blank"><i class="fa icon-line"></i> 送る</a>
+        <a class="hoverable" href="https://line.me/R/msg/text/?Memory.gc%28%29%20-%20%E6%B7%B1%E5%B1%A4%E3%81%AE%E4%BB%A4%E5%A6%B9%20%CE%B6%28*%EF%BE%9F%EF%BD%97%EF%BE%9F%29%CE%B6%20https://piyo7.github.io/deep-sister/chapter-xx" target="_blank"><i class="fa icon-line"></i> 送る</a>
       </li>
     </ul>
   </div>
@@ -263,9 +263,10 @@
     <li id="menu-left">
       <a class="hoverable" href="./">目次</a>
     </li>
-    <li class="hoverable" id="menu-center">
-      あなたの幸せを計算してみせて <i class="fa fa-angle-down"></i>
-      <ul id="menu-section">
+    <li id="menu-center">Memory.gc()</li>
+    <li class="hoverable" id="menu-right">
+      <i class="fa fa-caret-down"></i> <span id="menu-number"></span>
+      <ul id="menu-index">
         <li><a class="hoverable" href="#01">1</a></li>
         <li><a class="hoverable" href="#02">2</a></li>
         <li><a class="hoverable" href="#03">3</a></li>
@@ -283,7 +284,6 @@
         <li><a class="hoverable" href="#15">15</a></li>
       </ul>
     </li>
-    <li id="menu-right"></li>
   </ul>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript">
@@ -294,7 +294,7 @@
         if (offset == null || offset.top > window.pageYOffset) break;
         i++;
       }
-      $('#menu-right').text(Math.max(1, i - 1));
+      $('#menu-number').text(Math.max(1, i - 1));
     }
 
     menuRight();
