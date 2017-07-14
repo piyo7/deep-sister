@@ -110,9 +110,7 @@
     </div>
     <hr>
     <div class="extra hoverable">
-      <p>
-        <s>風里殺霊事件</s>
-      </p>
+      <p><s>風里殺霊事件</s></p>
     </div>
     <hr>
     <div class="extra hoverable">
@@ -142,21 +140,86 @@
   </div>
   <ul id="menu">
     <li id="menu-left">
-      <i class="fa fa-battery-1"></i>
-      <i class="fa fa-wifi"></i>
-      <i class="fa fa-cloud-upload"></i>
+      <i></i>
+      <i></i>
+      <i></i>
     </li>
     <li id="menu-center">
       深層の令妹 ζ(*ﾟｗﾟ)ζ
     </li>
     <li id="menu-right">
-      <i class="fa fa-motorcycle"></i>
-      <i class="fa fa-male"></i>
-      <i class="fa fa-heartbeat"></i>
+      <span id="menu-version"></span>
+      <i></i>
+      <i></i>
+      <i></i>
     </li>
   </ul>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript">
+    test = false;
+    let oldHour = null;
+    function updateMenu() {
+      const now = new Date()
+      let hour = now.getHours();
+      if (test) {
+        hour = (now.getMinutes() * 60 + now.getSeconds()) % 24;
+        $('#menu-center').text(hour);
+      }
+      if (oldHour == hour) return;
+      oldHour = hour;
+      const l = $('#menu-left > i');
+      const r = $('#menu-right > i');
+      const v = $('#menu-version');
+      l.removeClass();
+      r.removeClass();
+      v.text("");
+      if (hour <= 1) {
+        l.eq(0).addClass('fa fa-battery-0');
+        l.eq(1).addClass('fa fa-cloud-upload');
+      } else if (hour <= 9) {
+        l.eq(0).addClass('fa fa-battery-' + Math.min(Math.floor((hour - 1) / 2), 4));
+        if (hour == 2 || hour == 9) {
+          l.eq(1).addClass('fa fa-stethoscope');
+        }
+      } else if (hour <= 11) {
+        l.eq(0).addClass('fa fa-battery-4');
+        l.eq(1).addClass('fa fa-cloud-download');
+      } else {
+        l.eq(0).addClass('fa fa-battery-' + Math.floor(((26 - hour) / 3)));
+        l.eq(1).addClass('fa fa-wifi');       
+      }
+        
+      if (hour <= 11) {
+        v.text('v' + now.getFullYear() + ('0' + now.getMonth()).slice(-2) + ('0' + now.getDay()).slice(-2));
+      } else {
+        if (hour == 15 || hour == 23) {
+          r.eq(0).addClass('fa fa-heart');
+        } else {
+          r.eq(0).addClass('fa fa-heartbeat');          
+        }
+
+        if (hour == 12 || hour == 21) {
+          r.eq(1).addClass('fa fa-cutlery');
+        } else if (hour <= 16) {
+          r.eq(1).addClass('fa fa-pencil');
+        } else if (hour == 17 || hour == 19) {
+          r.eq(1).addClass('fa fa-motorcycle');
+        } else if (hour == 18) {
+          r.eq(1).addClass('fa fa-hospital-o');
+          r.eq(2).addClass('fa fa-commenting-o');
+          l.eq(2).addClass('fa fa-commenting-o');
+        } else if (hour == 20) {
+          r.eq(1).addClass('fa fa-shower');
+        } else if (hour == 22) {
+          r.eq(1).addClass('fa fa-desktop');
+        } else {
+          r.eq(1).addClass('fa fa-bed');          
+        }
+      }
+    }
+
+    updateMenu();
+    setInterval(updateMenu, 1000);
     $('.hoverable').on('mouseenter', function () {
       $(this).addClass('hover');
     }).on('mouseleave', function () {
