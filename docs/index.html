@@ -190,7 +190,7 @@
       }
         
       if (hour <= 11) {
-        v.text('v' + now.getFullYear() + ('0' + now.getMonth()).slice(-2) + ('0' + now.getDay()).slice(-2));
+        v.text('v' + now.getFullYear() + ('0' + (now.getMonth() + 1)).slice(-2) + ('0' + now.getDate()).slice(-2));
       } else {
         if (hour == 15 || hour == 23) {
           r.eq(0).addClass('fa fa-heart');
