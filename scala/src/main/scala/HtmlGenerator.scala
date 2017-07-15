@@ -74,6 +74,9 @@ object HtmlGenerator {
               case (Horizon, _) =>
                 Seq("""<hr>""")
 
+              case (Continued, _) =>
+                Seq()
+
               case (Blank, Section.Kind.Voice) =>
                 Seq("""<p class="voice-blank"><br></p>""")
 
@@ -101,6 +104,12 @@ object HtmlGenerator {
 
       val share = URLEncoder.encode(chapter.title + " - " + novel.title, "UTF-8").replace("+", "%20")
 
+      val end = if (chapter.sections.last.paragraphs.last == Continued) {
+          "（つづく）"
+        } else {
+          "（了）"
+        }
+
       val next = nextChapter.map(c => f"""<a class="hoverable" href="${c.path}"><i class="fa fa-volume-control-phone"></i>『${c.title}』</a>""").
         getOrElse("""<a class="hoverable" href="./"><i class="fa fa-home"></i>『目次』</a>""")
 
@@ -115,6 +124,7 @@ object HtmlGenerator {
           replace("__LEAD__", lead).
           replace("__CHAT__", chat.mkString("\n" + " " * 4)).
           replace("__SHARE__", share).
+          replace("__END__", end).
           replace("__NEXT__", next))
       }
     }

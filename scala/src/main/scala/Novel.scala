@@ -39,6 +39,7 @@ object Section {
   private val voiceEndR = """^　(.*)([」』])$""".r
   private val commentR = """^::.*$""".r
   private val horizonR = """^---$""".r
+  private val continuedR = """^\.\.\.$""".r
   private val blankR = """^$""".r
   private val grayedR = """^(\/\/.*)$""".r
 
@@ -79,6 +80,9 @@ object Section {
 
           case (horizonR(), _) =>
             Some(Horizon)
+
+          case (continuedR(), _) =>
+            Some(Continued)
 
           case (blankR(), _) =>
             Some(Blank)
@@ -153,5 +157,7 @@ object Voice {
 case class Description(line: String, grayed: Boolean) extends Paragraph
 
 case object Horizon extends Paragraph
+
+case object Continued extends Paragraph
 
 case object Blank extends Paragraph

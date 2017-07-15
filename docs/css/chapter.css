@@ -44,21 +44,21 @@
   clear: both;
 }
 
-.next-chapter {
+.chapter-end {
   padding-top: 9em;
   line-height: 3em;
   text-align: center;
   clear: both;
 }
 
-.next-chapter a {
+.chapter-end a {
   color: black;
   text-decoration: none;
   display: block;
   border-radius: 1.5em;
 }
 
-.next-chapter a.hover {
+.chapter-end a.hover {
   background: hsl(0, 0%, 85%);
 }
 
