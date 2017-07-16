@@ -14,6 +14,7 @@ object HtmlGenerator {
       "04_流星シンドローム.txt",
       "05_DELETEME.txt",
       "06_蓬莱にごり酒.txt",
+      "07_風里殺霊事件.txt",
       "credit.txt",
       "XX_「わたくしの一生を賭けて、あなたの幸せを計算してみせて？」.txt"
     )} yield Using(Source.fromResource(fileName)(Codec("UTF-8")))(_.mkString)).mkString
@@ -28,7 +29,7 @@ object HtmlGenerator {
 
     val template = Using(Source.fromResource("template.html")(Codec("UTF-8")))(_.mkString)
 
-    for ((chapter, nextChapter) <- novel.chapters.zipAll(novel.chapters.slice(1, 7).map(Some(_)), novel.chapters.last, None)) {
+    for ((chapter, nextChapter) <- novel.chapters.zipAll(novel.chapters.slice(1, 8).map(Some(_)), novel.chapters.last, None)) {
       val chat = (for ((section, i) <- chapter.sections.zipWithIndex) yield {
         (f"""<div class="section-index" id="${i + 1}%02d">""" +
           (if (i > 0) f"""<span>${if (section.title.take(2) == ": ") section.title.drop(2) else "§"}</span>""" else "") +
