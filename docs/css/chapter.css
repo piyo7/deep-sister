@@ -1,6 +1,6 @@
 #chat {
-  padding: 48px calc(50% - 320px) 0 calc(50% - 320px);
-  width: 640px;
+  padding: 2em calc(50% - 12em) 0 calc(50% - 12em);
+  width: 24em;
   position: absolute;
   flex-flow: column;
   list-style: none;
@@ -16,6 +16,7 @@
   padding: 0.5em;
   clear: both;
   max-width: 18em;
+  line-height: 1.5em;
 }
 
 .voice-left {
@@ -39,7 +40,7 @@
 }
 
 .description {
-  margin: 0 0.75em;
+  margin: 0 0.5em;
   line-height: 1.75em;
   clear: both;
 }
@@ -68,16 +69,16 @@
 
 .stamp {
   border: 2px solid #808080;
-  height: 320px;
-  width: 320px;
+  height: 12em;
+  width: 12em;
   border-radius: 2em;
 }
 
 #chat hr {
-  margin: 0 160px;
+  margin: 0 6em;
   border-bottom: 2px dashed #404040;
   height: 1px;
-  width: 320px;
+  width: 12em;
   clear: both;
 }
 
@@ -95,10 +96,10 @@
 }
 
 .section-index span {
-  left: 240px;
-  padding-top: 2em;
+  left: 6em;
+  padding-top: calc(2em + 1px);
   height: 1em;
-  width: 160px;
+  width: 4em;
   position: absolute;
   font-size: 1.5em;
   color: #404040;
@@ -112,9 +113,8 @@
 }
 
 #menu-index {
-  width: 640px;
-  top: -1px;
-  left: -520px;
+  width: 24em;
+  left: -19em;
   position: relative;
   visibility: hidden;
   opacity: 0;
@@ -134,5 +134,10 @@
 #menu-index li {
   height: 2em;
   line-height: 2em;
-  width: 106px;
+  width: 4em;
+}
+
+#menu-index a.hover {
+  color: black;
+  font-weight: bold;
 }

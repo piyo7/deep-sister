@@ -1,12 +1,13 @@
 #contents {
-  padding: 72px calc(50% - 320px) 0 calc(50% - 320px);
-  width: 640px;
+  padding: 3em calc(50% - 12em) 0 calc(50% - 12em);
+  width: 24em;
   position: absolute;
   flex-flow: column;
   text-align: center;
 }
 
-.chapter {
+.chapter, .extra {
+  font-size: 1.25em;
   height: 3em;
   width: 100%;
   position: relative;
@@ -56,10 +57,7 @@
 }
 
 .extra {
-  height: 3em;
-  width: 100%;
   line-height: 3em;
-  position: relative;
 }
 
 .extra p {
@@ -97,4 +95,8 @@ hr {
   height: 2px;
   width: 100%;
   background: linear-gradient(to right, #fbfbfb, #a0a0a0, #a0a0a0, #fbfbfb);
+}
+
+#menu-version {
+  font-size: 0.8em;
 }

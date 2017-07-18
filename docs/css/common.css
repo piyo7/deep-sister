@@ -7,12 +7,12 @@
   border: 0;
   padding: 0;
   -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
-  font-family: arial, "Mplus 1p", sans-serif;
-  font-size: 26px;
 }
 
 body {
   background: #fbfbfb;
+  font-family: arial, "Mplus 1p", sans-serif;
+  font-size: 20px;
 }
 
 #sns {
@@ -32,7 +32,7 @@ body {
 }
 
 #sns-hatebu, #sns-facebook, #sns-twitter, #sns-line {
-  width: 160px;
+  width: 6em;
   padding: 0.5em 0;
   height: 2em;
   line-height: 2em;
@@ -76,7 +76,7 @@ body {
 
 .icon-hatebu:before {
   content: "B!";
-  font-family: Verdana;
+  font-family: Verdana, sans-serif;
   font-weight: bold;
 }
 
@@ -89,7 +89,7 @@ body {
 #menu {
   height: 3em;
   line-height: 3em;
-  padding: 0 calc(50% - 320px);
+  padding: 0 calc(50% - 12em);
   width: 100%;
   position: fixed;
   color: white;
@@ -106,7 +106,7 @@ body {
 }
 
 #menu-left, #menu-right {
-  width: 120px;
+  width: 5em;
   background: #a0a0a0;
 }
 
@@ -115,16 +115,7 @@ body {
 }
 
 #menu-center {
-  width: 400px;
+  width: 14em;
   background: #808080;
   white-space: nowrap;
-}
-
-#menu-index a.hover {
-  color: black;
-  font-weight: bold;
-}
-
-#menu-version {
-  font-size: 20px;
 }
