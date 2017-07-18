@@ -166,10 +166,19 @@
   </ul>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript">
+    function version(date) {
+      return 'v' +
+        date.getFullYear() +
+        ('0' + (date.getMonth() + 1)).slice(-2) +
+        ('0' + date.getDate()).slice(-2);
+    }
+
     test = false;
     let oldHour = null;
     function updateMenu() {
-      const now = new Date()
+      const now = new Date();
+      const yesterday = new Date();
+      yesterday.setDate(now.getDate() - 1);
       let hour = now.getHours();
       if (test) {
         hour = (now.getMinutes() * 60 + now.getSeconds()) % 24;
@@ -186,22 +195,20 @@
       if (hour <= 1) {
         l.eq(0).addClass('fa fa-battery-0');
         l.eq(1).addClass('fa fa-cloud-upload');
+        v.text(version(yesterday));
       } else if (hour <= 9) {
         l.eq(0).addClass('fa fa-battery-' + Math.min(Math.floor((hour - 1) / 2), 4));
         if (hour == 2 || hour == 9) {
           l.eq(1).addClass('fa fa-stethoscope');
         }
+        v.text("P-Container");
       } else if (hour <= 11) {
         l.eq(0).addClass('fa fa-battery-4');
         l.eq(1).addClass('fa fa-cloud-download');
+        v.text(version(now));
       } else {
         l.eq(0).addClass('fa fa-battery-' + Math.floor(((26 - hour) / 3)));
-        l.eq(1).addClass('fa fa-wifi');       
-      }
-        
-      if (hour <= 11) {
-        v.text('v' + now.getFullYear() + ('0' + (now.getMonth() + 1)).slice(-2) + ('0' + now.getDate()).slice(-2));
-      } else {
+        l.eq(1).addClass('fa fa-wifi'); 
         if (hour == 15 || hour == 23) {
           r.eq(0).addClass('fa fa-heart');
         } else {
@@ -215,9 +222,9 @@
         } else if (hour == 17 || hour == 19) {
           r.eq(1).addClass('fa fa-motorcycle');
         } else if (hour == 18) {
+          l.eq(2).addClass('fa fa-commenting-o');
           r.eq(1).addClass('fa fa-hospital-o');
           r.eq(2).addClass('fa fa-commenting-o');
-          l.eq(2).addClass('fa fa-commenting-o');
         } else if (hour == 20) {
           r.eq(1).addClass('fa fa-shower');
         } else if (hour == 22) {
