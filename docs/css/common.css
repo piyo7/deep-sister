@@ -34,8 +34,8 @@ body {
 #sns-hatebu, #sns-facebook, #sns-twitter, #sns-line {
   width: 6em;
   padding: 0.5em 0;
-  height: 2em;
-  line-height: 2em;
+  height: 3em;
+  line-height: 3em;
 }
 
 #sns-hatebu a {

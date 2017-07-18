@@ -114,6 +114,7 @@
 
 #menu-index {
   width: 24em;
+  top: -1px;
   left: -19em;
   position: relative;
   visibility: hidden;
