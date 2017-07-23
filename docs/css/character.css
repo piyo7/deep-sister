@@ -1,6 +1,6 @@
 .char99 { background-color: hsla(0, 0%, 0%, 0); }
 
-.char00 { background-color: hsl(  0,   0%, 85%); }
+.char00 { background-color: hsl(  0,   0%, 90%); }
 .char01 { background-color: hsl(180, 100%, 85%); }
 .char02 { background-color: hsl( 30, 100%, 85%); }
 .char03 { background-color: hsl( 60, 100%, 85%); }
@@ -11,8 +11,9 @@
 .char08 { background-color: hsl(255,  75%, 85%); }
 .char09 { background-color: hsl( 90, 100%, 85%); }
 .char10 { background-color: hsl( 15,  75%, 85%); }
-.char11 { background-color: hsl(135,  50%, 85%); }
+.char11 { background-color: hsl(120,  50%, 85%); }
 .char12 { background-color: hsl( 45,  75%, 85%); }
 .char13 { background-color: hsl(330,  50%, 85%); }
 .char14 { background-color: hsl(225,  75%, 85%); }
-.char15 { background-color: hsl(270, 100%, 85%); }
+.char15 { background-color: hsl(165,  75%, 85%); }
+.char16 { background-color: hsl(270, 100%, 85%); }
