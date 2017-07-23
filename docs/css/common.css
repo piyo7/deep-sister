@@ -86,11 +86,18 @@ body {
   font-weight: bold;
 }
 
-#alphapolis {
+#banner {
   margin: 0 auto 1em auto;
-  height: 31px;
-  width: 88px;
-  display: block;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+  list-style: none;
+  clear: both;
+}
+
+#banner a {
+  height: 40px;
+  width: 200px;
 }
 
 #menu {
