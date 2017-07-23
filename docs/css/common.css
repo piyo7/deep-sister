@@ -16,7 +16,7 @@ body {
 }
 
 #sns {
-  padding: 3em 0 1em 0;  
+  padding: 3em 0 0 0;  
   display: flex;
   flex-flow: row;
   list-style: none;
@@ -84,6 +84,13 @@ body {
   content: "LINE";
   font-family: Meiryo, sans-serif;
   font-weight: bold;
+}
+
+#alphapolis {
+  margin: 0 auto 1em auto;
+  height: 31px;
+  width: 88px;
+  display: block;
 }
 
 #menu {
