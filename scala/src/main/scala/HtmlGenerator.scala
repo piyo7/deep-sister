@@ -87,12 +87,12 @@ object HtmlGenerator {
           }).flatten
       }).flatten
 
-      val index = (if (chapter.sections.size > 1) {
+      val index = if (chapter.sections.size > 1) {
         ("""<ul id="menu-index">""" +:
           (1 to chapter.sections.size).map(i => f"""<li><a class="hoverable" href="#$i%02d">$i</a></li>""").map(" " * 2 + _) :+
           """</ul>"""
-        ).mkString("\n" + " " * 6)
-      } else "")
+          ).mkString("\n" + " " * 6)
+      } else ""
 
       val lead = chapter.sections.flatMap(_.paragraphs).collect {
         case Voice(_, _, Voice.Kind.Direct, lines) => "「" + lines.mkString("") + "」"
