@@ -1,7 +1,6 @@
 {
-    "name": "dreamist",
-    "displayName": "DreaMist",
-    "description": "どりーみすと",
+    "name": "deep-sister",
+    "displayName": "深層の令妹",
     "version": "0.0.1",
     "publisher": "夢霧もろは",
     "engines": {
@@ -17,19 +16,19 @@
     "contributes": {
         "commands": [
             {
-                "command": "dreamist.switchIcons",
+                "command": "deep-sister.switchIcons",
                 "title": "Switch Icons"
             },
             {
-                "command": "dreamist.downloadIcons",
+                "command": "deep-sister.downloadIcons",
                 "title": "Download Icons"
             },
             {
-                "command": "dreamist.rubyNovel",
+                "command": "deep-sister.rubyNovel",
                 "title": "Ruby Novel"
             },
             {
-                "command": "dreamist.publishNovel",
+                "command": "deep-sister.publishNovel",
                 "title": "Publish Novel"
             }
         ]
