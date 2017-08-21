@@ -1,9 +1,14 @@
 {
-    "version": "0.1.0",
-    "command": "npm",
-    "isShellCommand": true,
-    "showOutput": "silent",
-    "args": ["run", "compile", "--loglevel", "silent"],
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "taskName": "npm",
+            "command": "npm",
+            "type": "shell",
+            "args": ["run", "compile", "--loglevel", "silent"],
+            "problemMatcher": "$tsc-watch"
+        }
+    ],
     "isBackglound": true,
-    "problemMatcher": "$tsc-watch"
+    "runner": "terminal"    
 }
