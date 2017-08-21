@@ -128,17 +128,20 @@ function decorateInvalidTitle(editor: TextEditor) {
 }
 
 function displayWordCount() {
-    const document = vscode.window.activeTextEditor.document
-    let count = 0
-    for (let i = 0; i < document.lineCount; i++) {
-        const line = document.lineAt(i).text
-        if (line.length > 0 && line[0] != '#') {
-            for (let j = 0; j < line.length; j++) {
-                if (line.charCodeAt(j) > 127) count++
+    const editor = vscode.window.activeTextEditor
+    if (editor != null) {
+        const document = editor.document
+        let count = 0
+        for (let i = 0; i < document.lineCount; i++) {
+            const line = document.lineAt(i).text
+            if (line.length > 0 && line[0] != '#') {
+                for (let j = 0; j < line.length; j++) {
+                    if (line.charCodeAt(j) > 127) count++
+                }
             }
         }
+        vscode.window.setStatusBarMessage(count.toString() + "文字")
     }
-    vscode.window.setStatusBarMessage(count.toString() + "文字")
 }
 
 function downloadIcons() {
