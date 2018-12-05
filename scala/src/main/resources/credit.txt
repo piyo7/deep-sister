@@ -5,7 +5,7 @@
 r00 「作者？」
 l00 「｜夢霧《ゆめきり》もろは」
 r00 「連絡先？」
-l00 「Twitter <a href="https://twitter.com/moroha_yumekiri">@moroha_yumekiri</a>」
+l00 「Twitter <a href="https://twitter.com/piyo7z">@piyo7z</a>」
 l00 「moroha(どっと)y(あっと)gmail(どっと)com」
 r00 「登場人物？」
 l01 「｜名塚《なつか》｜令《れい》」
